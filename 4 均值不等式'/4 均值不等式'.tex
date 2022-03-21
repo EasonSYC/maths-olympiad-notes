@@ -1,0 +1,250 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 4 均值不等式'}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年10月23日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 设正实数$a, b, c$满足$abc=1$，求证：$\displaystyle \frac{a^{2021}}{a+b}+\frac{b^{2021}}{b+c}+\frac{c^{2021}}{c+a}\geq\frac{3}{2}.$
+			~\\
+
+			\textbf{法一}：$\displaystyle \frac{a^{2021}}{a+b} + \frac{a+b}{4} + \underbrace{\frac{1}{2} + \cdots + \frac{1}{2}}_{2019\text{个}} \geq 2021\sqrt[2021]{\frac{a^{2021}}{2^{2021}}}=\frac{2021}{2}a.$
+
+				$\therefore \displaystyle \frac{a^{2021}}{a+b}\geq\frac{2021}{2}a-\frac{a+b}{4}-\frac{2019}{2}.$
+
+				同理$\therefore \displaystyle \frac{b^{2021}}{b+c}\geq\frac{2021}{2}b-\frac{b+c}{4}-\frac{2019}{2}, \frac{c^{2021}}{c+a}\geq\frac{2021}{2}c-\frac{c+a}{4}-\frac{2019}{2}.$
+
+				于是有$\text{左}\geq\displaystyle\frac{2021}{2}(a+b+c)-\frac{a+b+c}{2}-\frac{2019}{2}\times3=1010(a+b+c)-\frac{2019}{2}\times 3\geq\frac{3}{2}.$
+
+			\textbf{法二}：由Cauchy不等式，有：$\displaystyle \left(\frac{a^{2021}}{a+b}+\frac{b^{2021}}{b+c}+\frac{c^{2021}}{c+a}\right)\left[(a+b)+(b+c)+(c+a)\right]\geq\left(a^\frac{2021}{2}+b^\frac{2021}{2}+c^\frac{2021}{2}\right)^2.$
+
+				$\therefore \text{原式}\geq\frac{\left(a^\frac{2021}{2}+b^\frac{2021}{2}+c^\frac{2021}{2}\right)^2}{2(a+b+c)}.$
+
+				由幂平均不等式，有$\displaystyle \sqrt[\frac{2021}{2}]{\frac{a^{\frac{2021}{2}}+b^{\frac{2021}{2}}+c^{\frac{2021}{2}}}{3}}\geq\frac{a+b+c}{3}.$
+
+				于是原式$\geq\displaystyle\frac{\left[3\left(\frac{a+b+c}{3}\right)^{\frac{2021}{2}}\right]^2}{2(a+b+c)}\geq\frac{3}{2}.$
+
+		~\\
+
+		\item 对于满足$\displaystyle\sum_{i=1}^{2015}x_i=2014$的非负实数$x_1, x_2, \cdots, x_2015$，求$\displaystyle\left(\sum_{i=1}^{2015}x_i^i\right)_{\min}$.
+			~\\
+
+			思路：$\displaystyle x_i+?+\cdots+?\geq i\sqrt[i]{x^i\cdot?^{i-1}}=x_i \Rightarrow ?^{i-1}=\frac{1}{i^i}, ?=i^{-\frac{i}{i-1}}.$
+
+			由均值不等式，有：$\displaystyle x_i^i+\underbrace{i^{-\frac{i}{i-1}}+\cdots+i^{-\frac{i}{i-1}}}_{i-1\text{个}}\geq x_i (i \geq 2)$,
+
+			即$\displaystyle x_i^i\geq x_i-(i-1)i^{-\frac{i}{i-1}} (i = 2, 3, \cdots, 2015),$
+
+			等号成立当且仅当$x_i=i^{-\frac{i}{i-1}}\in(0, 1),$
+
+			$\therefore x_2, x_2 \cdots x_2015\in(0, 1) \Rightarrow x_1$非负.
+
+			$\therefore \displaystyle \sum_{i=1}^{2015}{x_i^i}\geq 2014-\sum_{k=2}^{2015}(k-1)k^{-\frac{k}{k-1}}.$
+
+		~\\
+
+		\item 设$a_i\in\mathbf{R}^{+} (i = 1, 2, \cdots, n)$且$a_1+a_2+\cdots+a_n=1$，求证：$\displaystyle \frac{a_1^4}{a_1^3+a_1^2a_2+a_1a_2^2+a_2^3}+\frac{a_2^4}{a_2^3+a_2^2a_3+a_2a_3^2+a_3^3}+\cdots+\frac{a_n^4}{a_n^3+a_n^2a_1+a_na_1^2+a_1^3}\geq\frac{1}{4}.$
+			~\\
+
+			记$\displaystyle M=\sum_{k=1}^{n}\frac{a_k^4}{a_k^3+a_k^2 a_{k+1} +a_k a_{k+1}^2 + a_{k+1}^3}, N=\sum_{k=1}^{n}\frac{a_{k+1}^4}{a_k^3+a_k^2 a_{k+1} + a_k a_{k+1}^2 + a_{k+1}^3},$
+
+			则$M-N=\displaystyle \sum_{k=1}^{n}\frac{a_k^4-a_{k+1}^4}{a_k^3+a_k^2 a_{k+1} + a_k a_{k+1}^2 + a_{k+1}^3}=\sum_{k=1}^{n}\left(a_k-a_{k+1}\right)=0,$
+
+			即$M=N$.
+
+			于是有
+
+			$$
+			\begin{array}{rclr}
+			M&=&\displaystyle\frac{1}{2}(M+N)\\
+			&=&\displaystyle\frac{1}{2}\sum_{k=1}^{n}\frac{a_k^4+a_{k+1}^4}{a_k^3+a_k^2 a_{k+1} + a_k a_{k+1}^2 + a_{k+1}^3}\\
+			&=&\displaystyle\frac{1}{2}\sum_{k=1}^{n}\frac{a_k^4+a_{k+1}^4}{(a_k+a_{k+1})(a_k^2+a_{k+1}^2)}\\
+			&\geq&\displaystyle\frac{1}{2}\sum_{k=1}^{n}\frac{\frac{(a_k^2+a_{k+1}^2)^2}{2}}{(a_k+a_{k+1})(a_k^2+a_{k+1}^2)}&(\text{Cauchy–Schwarz inequality})\\
+			&=&\displaystyle\frac{1}{4}\sum\frac{a_k^2+a_{k+1}^2}{a_k+a_{k+1}}\\
+			&\geq&\displaystyle\frac{1}{4}\sum\frac{a_k+a_{k+1}+1}{2}&(\text{Cauchy–Schwarz inequality})\\
+			&=&\frac{1}{4}\sum a_k\\
+			&=&4.\\
+			\end{array}
+			$$
+
+		~\\
+
+		\item 已知正实数$x, y, z$满足$xyz+xy+yz+zx+x+y+z=7$. 求证：$xyz(x+y+z)\leq 3$.
+			~\\
+
+			$(xy+yz+zx)^2\geq 3xyz(x+y+z),$ 等号成立？
+
+			记$M=xyz(x+y+z),$ 有：
+
+			$$
+			\begin{array}{rcl}
+				7&=&xyz+(xy+yz+zx)+(x+y+z)\\
+				 &\geq&\sqrt{3M}+xyz+\displaystyle\frac{1}{3}(x+y+z)+\frac{2}{3}(x+y+z)\\
+				 &\geq&\sqrt{3M}+2\sqrt{\frac{1}{3}M}+\frac{2}{3}(x+y+z),
+			\end{array}
+			$$
+
+			而
+
+			$$
+			\begin{array}{rcl}
+				(x+y+z)^4&=&(x+y+z)^3(x+y+z)\\
+				&\geq&27xyz(x+y+z)\\
+				&=&27M.
+			\end{array}{rcl}
+			$$
+
+			$7\geq\sqrt{3M}+2\sqrt{\frac{1}{3}M}+\frac{2}{3}\sqrt[4]{27M}=f(M),$
+
+			当$M=3$时取等.
+
+			$f(M)$单调递增，$\therefore M\leq 3$.
+
+		~\\
+
+		\item 设$a, b, c$为正实数，求证：$\displaystyle \left(1+\frac{a}{b}\right)\left(1+\frac{b}{c}\right)\left(1+\frac{c}{a}\right)\geq2\left(1+\frac{a+b+c}{\sqrt[3]{abc}}\right).$
+			~\\
+
+			\textbf{法一}：$\text{左}=2+\displaystyle\left(\frac{b}{a}+\frac{c}{b}+\frac{a}{c}\right)+\left(\frac{a}{b}+\frac{b}{c}+\frac{c}{a}\right).$
+
+			由均值不等式，有$\displaystyle \frac{c}{b}+\frac{a}{c}+\frac{a}{c}\geq 3\frac{a}{\sqrt[3]{abc}}, \frac{a}{c}+\frac{b}{a}+\frac{b}{a}\geq3\frac{b}{\sqrt[3]{abc}}, \frac{b}{a}+\frac{c}{b}+\frac{c}{b}\geq3\frac{c}{\sqrt[3]{abc}}.$
+
+			相加，有$\displaystyle 3\left(\frac{b}{a}+\frac{c}{b}+\frac{a}{c}\right)\geq3\frac{a+b+c}{\sqrt[3]{abc}}.$
+
+			$\displaystyle \frac{b}{a}+\frac{c}{b}+\frac{a}{c}\geq\frac{a+b+c}{\sqrt[3]{abc}}.$
+
+			同理，$\displaystyle \frac{a}{b}+\frac{b}{c}+\frac{c}{a}\geq\frac{a+b+c}{\sqrt[3]{abc}}.$
+
+			于是得证.
+
+			\textbf{法二}：
+			$$
+			\begin{array}{rcl}
+				\text{左}&=&\displaystyle \frac{(a+b)(b+c)(c+a)}{abc}\\\\
+				&=&\displaystyle \frac{(a+b+c)(ab+bc+ca)-abc}{abc}\\\\
+				&\geq&\displaystyle\frac{(a+b+c)3\sqrt[3]{a^2b^2c^2}}{abc}-1\\\\
+				&=&3\displaystyle\frac{a+b+c}{\sqrt[3]{abc}}-1\\\\
+				&=&2\displaystyle \frac{a+b+c}{\sqrt[3]{abc}}+\frac{a+b+c}{\sqrt[3]{abc}}-1\\\\
+				&\geq&2.
+			\end{array}
+			$$
+
+		~\\
+
+		\item $x_1, x_2, \cdots, x_n$为非负实数，求证：$\displaystyle \left(\sum_{k=1}^{n}\frac{x_k}{k}\right)\left(\sum_{k=1}^{n}kx_k\right)\leq\frac{(n+1)^2}{4n}\left(\sum_{k=1}^n x_k\right)^2$.
+			~\\
+
+			$n=2, \displaystyle \left(x_1+\frac{x_2}{2}\right)\left(x_1+2x_2\right)\leq\frac{9}{8}(x_1+x_2)^2 \Leftrightarrow \frac{1}{8}x_1^2+\frac{1}{8}x_2^2-\frac{1}{4}x_1 x_2\geq 0.$
+
+			$n=3, \displaystyle \left(x_1+\frac{x_2}{2}+\frac{x_3}{3}\right)\left(x_1+2x_2+3x_3\right)\leq\frac{4}{3}(x_1+x_2+x_3)^2 \Leftrightarrow \frac{1}{3}x_1^2+\frac{1}{3}x_2^2+\frac{1}{3}x_3^2+\frac{1}{6}x_1x_2+\frac{!}{2}x_2x_3-\frac{2}{3}x_3x_1\geq 0.$
+
+			猜想：等号成立条件$x_1=x_n, x_2=\cdots=x_{n-1}=0$.
+
+			$$
+			\begin{array}{rclr}
+				\displaystyle \left(\sum \frac{x_k}{k}\right)\left(\sum k x_k\right)&=&\displaystyle \frac{1}{n}\left(n\sum\frac{x_k}{k}\right)\left(\sum k x_k\right)\\\\
+				&\leq&\displaystyle \frac{1}{n}\left(\frac{n\sum\frac{x_k}{k}+\sum kx_k}{2}\right)^2\\\\
+				&=&\displaystyle \frac{1}{n}\left[\frac{\sum \left(k+\frac{n}{k}\right)x_k}{2}\right]^2\\\\
+				&\leq&\displaystyle \frac{1}{n}\left[\frac{\sum \left(1+\frac{n}{1}\right)x_k}{2}\right]^2&\displaystyle \forall k\in[1, n]: k+\frac{n}{k}\leq n+1\\\\
+				&=&\displaystyle \frac{(n+1)^2}{4n} \left(\sum x_k\right)^2.
+			\end{array}
+			$$
+
+		~\\
+
+		\item $\displaystyle \left(\sum_{k=1}^{5} x_k\right)\left(\sum_{k=1}^{5}\frac{1}{x_k}\right)<26$. 求证：$x_1, x_2, x_3, x_4, x_5$中的任意三个数均能构成三角形的三边长.
+			~\\
+
+			反证法：假设结论不成立.
+
+			不妨设$x_1\geq x_2+x_3$, 目标：$\displaystyle \left(\sum_{k=1}^{5}{x_k}\right)\left(\sum_{k=1}^{5}{\frac{1}{x_k}}\right)\geq 26.$
+
+			$$
+			\begin{array}{cl}
+			&\displaystyle \left(\sum_{k=1}^{5}{x_k}\right)\left(\sum_{k=1}^{5}{\frac{1}{x_k}}\right)\\
+			=&\displaystyle (x_1+x_2+x_3)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)+(x_4+x_5)\left(\frac{1}{x_4}+\frac{1}{x_5}\right)\\
+			&\displaystyle +\left(\frac{1}{x_4}+\frac{1}{x_5}\right)(x_1+x_2+x_3)+(x_4+x_5)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)\\
+			\geq&\displaystyle (x_1+x_2+x_3)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)+(x_4+x_5)\left(\frac{1}{x_4}+\frac{1}{x_5}\right)\\
+			&\displaystyle +2\sqrt{(x_4+x_5)\left(\frac{1}{x_4}+\frac{1}{x_5}\right)(x_1+x_2+x_3)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)}\\
+			\end{array}
+			$$
+
+			令$f(x_1, x_2, x_3)=(x_1+x_2+x_3)\displaystyle\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)=1+(x_2+x_3)\left(\frac{1}{x_2}+\frac{1}{x_3}\right)+x_1\left(\frac{1}{x_2}+\frac{1}{x_3}\right)+\frac{1}{x_1}(x_2+x_3)$，有$f$在$x_1\in(0, \sqrt{x_2 x_3}]$关于$x_1$单调递减，在$x_1\in[\sqrt{x_2 x_3}, +\infty)$关于$x_1$单调递增.
+
+			又有$x_1\geq x_2+x_3$，于是$f(x_1, x_2, x_3)\geq f(x_2+x_3, x_2, x_3)\geq1+4+4+1=10.$
+
+			于是有
+
+
+
+			$$
+			\begin{array}{cl}
+			&\displaystyle \left(\sum_{k=1}^{5}{x_k}\right)\left(\sum_{k=1}^{5}{\frac{1}{x_k}}\right)\\
+			\geq&(x_1+x_2+x_3)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)+(x_4+x_5)\left(\frac{1}{x_4}+\frac{1}{x_5}\right)\\
+			&\displaystyle +2\sqrt{(x_4+x_5)\left(\frac{1}{x_4}+\frac{1}{x_5}\right)(x_1+x_2+x_3)\left(\frac{1}{x_1}+\frac{1}{x_2}+\frac{1}{x_3}\right)}\\
+			=&f+4\sqrt{f}+4\\
+			\geq&26.
+			\end{array}
+			$$
+
+			即假设不成立，原命题成立.
+
+		~\\
+
+		\item 证明：$\displaystyle \frac{a+\sqrt{ab}+\sqrt[3]{abc}+\sqrt[4]{abcd}}{4}\leq\sqrt[4]{a\cdot\frac{a+b}{2}\cdot\frac{a+b+c}{3}\cdot\frac{a+b+c+d}{4}}$，其中$a, b, c, d$均为正数.
+			~\\
+
+			记
+			$$M=\sqrt[4]{a\cdot\frac{a+b}{2}\cdot\frac{a+b+c}{3}\cdot\frac{a+b+c+d}{4}}, $$
+
+			于是只需证明
+
+			$$\frac{a+\sqrt{ab}+\sqrt[3]{abc}+\sqrt[4]{abcd}}{M}\leq 4.$$
+
+			有
+
+			$$
+			\frac{a}{M}=\sqrt[4]{\frac{a}{a}\cdot\frac{a}{\frac{a+b}{2}}\cdot\frac{a}{\frac{a+b+c}{3}}\cdot\frac{a}{\frac{a+b+c+d}{4}}}\leq\frac{1}{4}\left(\frac{a}{a}+\frac{2a}{a+b}+\frac{3a}{a+b+c}+\frac{4a}{a+b+c+d}\right),
+			$$
+
+			$$
+			\frac{\sqrt{ab}}{M}=\sqrt[4]{\frac{a}{a}\cdot\frac{2a}{\frac{a+b}{2}}\cdot\frac{3b}{\frac{a+b+c}{3}}\cdot\frac{4b}{\frac{a+b+c+d}{4}}}\leq\frac{1}{4}\left(\frac{a}{a}+\frac{2a}{a+b}+\frac{3b}{a+b+c}+\frac{4b}{a+b+c+d}\right),
+			$$
+
+			$$
+			\frac{\sqrt[3]{abc}}{M}=\sqrt[4]{\frac{a}{a}\cdot\frac{2b}{\frac{a+b}{2}}\cdot\frac{3\sqrt[3]{abc}}{\frac{a+b+c}{3}}\cdot\frac{4c}{\frac{a+b+c+d}{4}}}\leq\frac{1}{4}\left(\frac{a}{a}+\frac{2b}{a+b}+\frac{3\sqrt[3]{abc}}{a+b+c}+\frac{4c}{a+b+c+d}\right),
+			$$
+
+			$$
+			\frac{\sqrt[4]{abd}}{M}=\sqrt[4]{\frac{a}{a}\cdot\frac{2b}{\frac{a+b}{2}}\cdot\frac{3c}{\frac{a+b+c}{3}}\cdot\frac{4d}{\frac{a+b+c+d}{4}}}\leq\frac{1}{4}\left(\frac{a}{a}+\frac{2b}{a+b}+\frac{3c}{a+b+c}+\frac{4d}{a+b+c+d}\right).
+			$$
+
+			相加，有
+
+			$$
+			\frac{a+\sqrt{ab}+\sqrt[3]{abc}+\sqrt[4]{abcd}}{M} \leq \frac{1}{4} \left(4+4+3+\frac{3\sqrt[3]{abc}}{a+b+c}+4\right) \leq 4.
+			$$
+
+	\end{enumerate}
+\end{document}
