@@ -1,0 +1,343 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 8 局部不等式与放缩法}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年11月20日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 设实数$a, b, c$满足$a+b+c=3$, 求证: $$\frac{1}{5a^2-4a+11}+\frac{1}{5b^2-4b+11}+\frac{1}{5c^2-4c+11}\leq\frac{1}{4}.$$
+			~\\
+
+			记
+
+			$$f(x)=\frac{1}{5x^2-4x+1},$$
+
+			设
+
+			$$f(x)\leq kx+m,$$
+
+			令
+
+			$$k=f'(1),$$
+
+			$$f'(x)=(5x^2-4x+11)^{-2}\cdot (10x-4) \Rightarrow f'(1)=-(12)^{-2}\cdot 6=-\frac{1}{24},$$
+
+			$$m=f(1)-k=\frac{1}{12}+\frac{1}{24}=\frac{1}{8},$$
+
+			于是有
+
+			\begin{align*}
+			f(x)\leq kx+m & \Leftrightarrow 24\leq -(x-3)(5x^2-4x+11)\\
+			& \Leftrightarrow -5x^3+19x^2-23x+9\geq 0\\
+			& \Leftrightarrow (x-1)(5x-9)(x-1)\leq 0.
+			\end{align*}
+
+			不妨设$a>\dfrac{9}{5}$, 于是有
+
+			\begin{align*}
+			\frac{1}{5a^2-4a+11} &< \frac{1}{5\left(\frac{9}{5}\right)^2-4\times \frac{9}{5}+11}=\frac{1}{20},\\
+			\frac{1}{5b^2-4b+11} &= \frac{1}{5\left(b-\frac{2}{5}\right)^2+\frac{51}{5}}\leq \frac{5}{51}<\frac{1}{10},\\
+			\frac{1}{5c^2-4c+11} &<\frac{1}{10}.\\
+			\end{align*}
+
+			相加, 得$\text{左}<\frac{1}{4}$.
+
+		~\\
+
+		\item 设$a, b, c>0$, 且$a+b+c=1$, 求证: $$\frac{1}{ab+2c^2+2c}+\frac{1}{bc+2a^2+2a}+\frac{1}{ca+2b^2+2b}\geq\frac{1}{ab+bc+ca}.$$
+			~\\
+
+			\begin{align*}
+				& \sum \frac{1}{ab+2c^2+2c(a+b+c)} \geq \frac{1}{ab+bc+ca}\\
+				\Leftrightarrow & \frac{1}{ab+2c^2+2ac+2bc+2c^2} \geq \frac{ab}{(ab+bc+ca)^2}\\
+				\Leftrightarrow & a^2 b^2 + b^2 c^2 + c^2 a^2 + 2ab^2 c + 2abc^2 + 2a^2 bc \geq a^2 b^2 + 2abc^2 + 2a^2 bc+2ab^2 c+2abc^2 \\
+				\Leftrightarrow & b^2 c^2 + c^2 a^2 - 2abc^2 \geq 0 \text{恒成立.}\\
+			\end{align*}
+
+			于是有
+
+			$$\text{左} \geq \frac{ab+bc+ca}{(ab+bc+ca)^2}=\text{右}.$$
+
+		~\\
+
+		\item 已知$x, y, z$为正数, 求证: $$\frac{x}{x+\sqrt{(x+y)(x+z)}}+\frac{y}{y+\sqrt{(y+z)(y+x)}}+\frac{z}{z+\sqrt{(z+x)(z+y)}}\leq 1.$$
+			~\\
+
+			\textbf{法一}:
+
+			$$\frac{x}{x+\sqrt{(x+y)(x+z)}}=\frac{x}{x+\sqrt{(x+y)(z+x)}}\leq \frac{x}{x+\left(\sqrt{xz}+\sqrt{xy}\right)}=\frac{\sqrt{x}}{\sqrt{x}+\sqrt{y}+\sqrt{z}}, \text{相加即得证.}$$
+
+			\textbf{法二}:
+
+			$$\frac{x}{x+\sqrt{(x+y)(x+z)}}=-\frac{x(x-\sqrt{(x-y)(x+z)})}\leq -\frac{x(x-\frac{2x+y+z}{2})}{(y+z)x+yz}=\frac{xy+xz}{2(xy+yz+zx)}.$$
+
+			\textbf{法三}:
+
+			$$\frac{x}{x+\sqrt{(x+y)(x+z)}}\leq \frac{x^k}{x^k+y^k+z^k} \Leftrightarrow x(y^k+z^k)\leq x^k \sqrt{(x+y)(x+z)} \Leftrightarrow (y^k+z^k)^2 \leq x^{2k-2} (x+y)(x+z).$$
+
+			$$\sum_{\text{项}}\cdot\text{系数}\cdot\text{$x$的指数}=1x\cdot 2k+1 x(2k-1)+\cdots=0, k=\frac{1}{2}.$$
+
+		~\\
+
+		\item 设$a, b, c$是非负实数, 求证: $$\sqrt{\frac{a^3}{a^3+(b+c)^3}}+\sqrt{\frac{b^3}{b^3+(c+a)^3}}+\sqrt{\frac{c^3}{c^3+(a+b)^3}} \geq 1.$$
+			~\\
+
+			令
+
+			$$\sqrt{\frac{a^3}{a^3+(b+c)^3}} \geq \frac{a^k}{a^k+b^k+c^k},$$
+
+			则有
+
+			$$a^{\frac{3}{2}}\left(a^k+b^k+c^k\right)\geq\frac{a^3+(b+c)^3}\cdot a^k,$$
+
+			即
+
+			$$\left(a^k + b^k + c^k \right)^2 \geq a^{2k-3} \left[a^3 + (b+c)^3 \right],$$
+
+			即
+
+			$$a^{2k}+2\left(b^k \cdot c^k \right) + a^k + \left(b^k + c^k \right)^2,$$
+
+			即
+
+			$$2k+4k=2k+8(2k-3),$$
+
+			有
+
+			$$k=2.$$
+
+			于是即证
+
+			$$\sqrt{\frac{a^3}{a^3+(b+c)^3}}\geq\frac{a^2}{a^2+b^2+c^2},$$
+
+			即证
+
+			$$(a^2+b^2+c^2)^2\geq a\cdot[a^3+(b+c)^3],$$
+
+			只需证
+
+			$$\left[a^2+\frac{(b+c)^2}{2}\right]\geq a[a^3+(b+c)^3],$$
+
+			即证
+
+			$$a^2 (b+c)^2 + \frac{(b+c)^4}{4}\geq(b+c)^3 a,$$
+
+			即证
+
+			$$a^2 + \frac{(b+c)^2}{4} \geq (b+c)a, \text{成立}.$$
+
+		~\\
+
+		\item 设$x, y, z\in\mathbb{R}$, 求证: $$\frac{9}{4}(x^2-x+1)(y^2-y+1)(z^2-z+1)\geq x^2 y^2 z^2 - xyz + 1.$$
+			~\\
+
+			有
+
+			\begin{align*}
+				\text{左} &= \frac{3}{2}(x^2-x+1) (y^2-y+1) \frac{3}{2} (z^2-z+1)\\
+				&\geq [(xy)^2-xy+1]\frac{3}{2}(z^2-z+1)\\
+				&\geq (xyz)^2 - xyz + 1.
+			\end{align*}
+
+			即证
+
+			$$\frac{3}{2}(x^2-x+1)(y^2-y+1)\geq(xy)^2-xy+1,$$
+
+			即证
+
+			$$\left(\frac{1}{2}x^2-\frac{3}{2}x+\frac{3}{2}\right) y^2 + \left(-\frac{3}{2}x^2 + \frac{5}{2}x - \frac{3}{2}\right) y + \left(\frac{3}{2}x^2 - \frac{3}{2} x + \frac{1}{2} \right) \geq 0,$$
+
+			即证
+
+			\begin{align*}
+				\Delta &= \left(\frac{3}{2} x^2 - \frac{5}{2} x + \frac{3}{2} \right)^2 - 4\left(\frac{1}{2} x^2 - \frac{3}{2} x + \frac{3}{2} \right) \left(\frac{3}{2} x^2 - \frac{3}{2} x + \frac{1}{2} \right)\\
+				&= -\frac{3}{4} x^4 + \frac{9}{2} x^2 - \frac{33}{4} x^2 + \frac{9}{2} x - \frac{3}{4}\\
+				&\leq 0,
+			\end{align*}
+
+			即证
+
+			$$x^4 - 6x^3 + 11x^2 - 6x + 1 \geq 0,$$
+
+			而
+
+			$$(x^2-3x+1)^2 \geq 0,$$
+
+			故得证.
+
+		~\\
+
+		\item 设实数$a, b, c, d$满足$a+b+c+d=6, a^2 + b^2 + c^2 + d^2 = 12,$ 求证: $$36 \leq 4 (a^3 + b^3 + c^3 + d^3) - (a^4 + b^4 + c^4 + d^4) \leq 48.$$
+			~\\
+
+			\textbf{左侧等号, 法一}:
+
+			即证
+
+			$$4a^3-a^4 \geq xa^2 + ya + z,$$
+
+			等号成立当且仅当$a = 1$ or $a = 3$.
+
+			故有
+
+			$$
+			\left\{
+			\begin{array}{rcl}
+				3 &=& x+y+z\\
+				27 &=& 9x+3y+z\\
+				36 &=& 12x+6y+4z\\
+			\end{array}
+			\right.
+			\Rightarrow
+			\left\{
+			\begin{array}{rcl}
+				x &=& 2\\
+				y &=& 4\\
+				z &=& -3\\
+			\end{array}
+			\right.
+			$$
+
+			\textbf{左侧等号, 法二}:
+
+			\begin{align*}
+				3(b^2+c^2+d^2) &\geq (b+c+d)^2\\
+				3(12-a^2) &\geq (6-a)^2\\
+				0 &\geq 4a^2 - 12a\\
+				a &\in [0, 3]\\
+			\end{align*}
+
+			即证
+
+			$$a^4 - 4a^3 + xa^2 + ya + z \leq 0,$$
+
+			对$a \in [0, 3]$恒成立.
+
+			$(a-1)^2 (a-3) (a+1),$
+
+			相加得$\sum (4a^3 - a^4) \geq 36.$
+
+			\textbf{右侧等号}:
+
+			等号成立条件$a=0$ or $a=2$.
+
+			$4a^3 - a^4 \leq 4a^2$, 成立.
+
+		~\\
+
+		\item 设$a_1, a_2, \cdots, a_n (n\geq 2)$是$n$个互不相等的正数, 且满足$\displaystyle \sum_{k=1}^{n} a_k^{-2n} = 1,$ 求证: $$\sum_{k=1}^{n} a_k^{2n} - n^2 \sum_{1\leq i<j\leq n}\left(\frac{a_i}{a_j} - \frac{a_j}{a_i}\right)^2 > n^2.$$
+			~\\
+
+			有
+
+			$$\sum_{k=1}^{n} a_k^{2n}=\sum_{k=1}^{n} a_k^{2n} \cdot \sum_{k=1}^{n} a_k^{-2n},$$
+
+			$$\sum_{1\leq i<j \leq n}\left(\frac{a_i}{a_j} - \frac{a_j}{a_i}\right)^2 = \sum\left(\frac{a_i^2}{a_j^2}-2+\frac{a_j^2}{a_i^2}\right),$$
+
+			故
+
+			$$\sum_{k=1}^{n} a_k^{2n} - n^2 = \sum_{1\leq i<j\leq n}\left(a_i^n \cdot a_j^{-n} - a_i^n \cdot a_j^{-n}\right)^2,$$
+
+			故只需证
+
+			$$\left(\frac{a_i^n}{a_j^n} - \frac{a_j^n}{a_i^n}\right)^2 \geq n^2 \left(\frac{a_i}{a_j} - \frac{a_j}{a_i}\right)^2,$$
+
+			即证
+
+			$$\left\vert \frac{a_i^n}{a_j^n} - \frac{a_j^n}{a_i^n} \right\vert > n\left\vert \frac{a_i}{a_j} - \frac{a_j}{a_i} \right\vert.$$
+
+			有
+
+			$$\left\vert \frac{a_i^n}{a_j^n} - \frac{a_j^n}{a_i^n} \right\vert = \left\vert \left(\frac{a_i}{a_j} - \frac{a_j}{a_i}\right) \left[\left(\frac{a_i}{a_j}\right)^{n-1} + \left(\frac{a_i}{a_j}\right)^{n-3} + \cdots + \left(\frac{a_i}{a_j}\right)^{1-n}\right]\right\vert,$$
+
+			又因为
+
+			\begin{align*}
+				\left(\frac{a_i}{a_j}\right)^{n-1} + \left(\frac{a_i}{a_j}\right)^{1-n} &> 2,\\
+				\left(\frac{a_i}{a_j}\right)^{n-3} + \left(\frac{a_i}{a_j}\right)^{3-n} &> 2,\\
+				\cdots &> \cdots \\
+			\end{align*}
+
+			相加有
+
+			$$\left(\frac{a_i}{a_j}\right)^{n-1} + \cdots + \left(\frac{a_i}{a_j}\right)^{1-n} > n, \text{得证.}$$
+
+		~\\
+
+		\item 设$a, b, c$是正实数, 求证: $$\sqrt{abc} \left(\sqrt{a}+\sqrt{b}+\sqrt{c}\right)+(a+b+c)^2 \geq 4\sqrt{3abc(a+b+c)}.$$
+			~\\
+
+			不妨设$a+b+c=3$,
+
+			即证
+
+			$$\sqrt{abc}\left(\sqrt{a}+\sqrt{b}+\sqrt{c}\right)+9\geq 12\sqrt{abc}.$$
+
+			有
+
+			$$\text{左} \geq (a+b+c)^2 + 3(abc)^{\frac{2}{3}},$$
+
+			记
+
+			$$m^3 = \sqrt{abc}, m \in (0, 1],$$
+
+			只需证
+
+			$$m^3 \cdot 3m + 9 \geq \sqrt{2} m^3,$$
+
+			即证
+
+			$$m^4 + 3 \geq 4m^3,$$
+
+			即证
+
+			$$(m-1)(m^3-3m^2-3m-3)\geq 0, \text{显然成立.}$$
+
+		~\\
+
+		\item 设正整数$n \geq 2$, 求证: $$\cos \frac{1}{2} \cdot \cos \frac{1}{3} \cdots \cos \frac{1}{n} > \frac{\sqrt{2}}{2}.$$
+			~\\
+
+			即证
+
+			$$\cos \frac{1}{2} \cos \frac{1}{3} \cdots \cos \frac{1}{n} \cos 0 > \frac{\sqrt{2}}{2}.$$
+
+			若$x\in\left(0, \dfrac{\pi}{2}\right)$, 则有$\sin x < x < \tan x,$
+
+			故
+
+			$$\cos \frac{1}{n} > 1 - \sin^2 \frac{1}{n} > 1-\left(\frac{1}{n}\right)^2,$$
+
+			故
+
+			\begin{align*}
+				\text{原式}^2 &= \left[1-\left(\frac{1}{2}\right)^2\right] \left[1-\left(\frac{1}{3}\right)^2\right] \cdots\\
+				&= \frac{1}{2} \times \frac{3}{2} \times \frac{2}{3} \times \frac{4}{3} \times \cdots\\
+				&= \left(\frac{1}{2} \times \frac{2}{3} \times \cdots \times \frac{n-1}{n}\right)\times\left(\frac{3}{2} \times \frac{4}{3} \times \cdots \times \frac{n+1}{n} \right)\\
+				&= \frac{1}{n} \times \frac{n+1}{2}\\
+				&> \frac{1}{2}, \text{得证}.
+			\end{align*}
+
+	\end{enumerate}
+\end{document}
