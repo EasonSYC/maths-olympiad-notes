@@ -1,0 +1,271 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 3 均值不等式}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年10月16日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	均值不等式：$\displaystyle \forall x_1, x_2, \cdots, x_n \in \mathbf{R}^{+}, n \in \mathbf{N}^{*}\cap[2, +\infty): \frac{1}{n}\sum_{i=1}^{n}{x_i}\geq\sqrt[n]{\prod_{i=1}^{n}{x_i}},$等号成立当且仅当$x_1=x_2=\cdots=x_n$.
+
+	幂平均不等式：$\displaystyle \forall x_1, x_2, \cdots, x_n \in \mathbf{R}^{+}, n \in \mathbf{N}^{*}\cap[2, +\infty): f(p)=\left(\frac{x_1^p+x_2^p+\cdots+x_n^p}{n}\right)^\frac{1}{p}$单调递增.
+
+	考虑$p=2,1,0,-1$，则有：$\displaystyle \sqrt{\frac{x_1^2+x_2^2+\cdots+x_n^2}{n}}\geq \frac{x_1+x_2+\cdots+x_n}{n} \geq \sqrt[n]{x_1x_2\cdots x_n} \geq \frac{n}{\frac{1}{x_1}+\frac{1}{x_2}+\cdots+\frac{1}{x_n}}.$
+
+	注：$p=0$实质上为$p\rightarrow0$，求解如下：
+
+	$$f(p)=\left(\frac{x_1^p+x_2^p+\cdots+x_n^p}{n}\right)^\frac{1}{p}=e^{\frac{1}{p}\ln{\frac{x_1^p+x_2^p+\cdots+x_n^p}{n}}},$$
+
+	$$
+	\begin{array}{rcl}
+	\displaystyle \lim_{p\rightarrow 0}{\frac{1}{p}\ln{\frac{x_1^p+x_2^p+\cdots+x_n^p}{n}}}&\overset{\text{L. Hospital}}{\xlongequal{\quad\quad\quad}}&\displaystyle \lim_{p\rightarrow 0}{\frac{n}{x_1^p+x_2^p+\cdots+x_n^p}\cdot\frac{x_1^p\ln{x_1}+x_2^p\ln{x_2}+\cdots+x_n^p\ln{x_n}}{n}}\\\\
+	&=&\displaystyle\frac{\ln x_1+\ln x_2+\cdots+\ln x_n}{n},\\
+	\end{array}
+	$$
+
+	$\displaystyle\therefore\lim_{p\rightarrow0}f(p)=e^{\frac{\ln x_1+\ln x_2+\cdots+\ln x_n}{n}}=\sqrt[n]{x_1 x_2 \cdots x_n}.$
+
+	\begin{enumerate}
+		\item 证明均值不等式：$\displaystyle \forall x_1, x_2, \cdots, x_n \in \mathbf{R}^{+}, n \in \mathbf{N}^{*}\cap[2, +\infty): \frac{1}{n}\sum_{i=1}^{n}{x_i}\geq\sqrt[n]{\prod_{i=1}^{n}{x_i}}.$
+
+			本题可选用数学归纳法解决.
+
+			\begin{enumerate}[label=$\arabic*^{\circ}$]
+				\item $n=2$时，显然成立.
+
+				\item 假设$n=k$时成立，证明对$n=k+1$时成立.
+
+					记$\displaystyle\frac{1}{k}\sum_{i=1}^{k}{x_i}=A_k, \sqrt[k]{\prod_{i=1}^{k}{x_i}}=G_k,$
+
+					则有$A_k\geq G_k.$
+
+					当$n=k+1$时，
+
+					$$
+					\begin{array}{rl}
+						     & (k+1)A_{k+1}\\
+						\geq & kG_{k}+x_{k+1}\\
+						   = & kG_{k}+[x_{k+1}+(k-1)G_{k+1}]-(k-1)G_{k+1}\\
+						\geq & kG_{k}+k\sqrt[k]{x_{k+1}G_{k+1}^{k-1}}-(k-1)G_{k+1}\\
+						\geq & k\cdot2\sqrt{G_{k}\cdot\sqrt[k]{x_{k-1}G_{k+1}^{k-1}}}-(k-1)G_{k+1}\\
+						   = & 2k\cdot\sqrt[2k]{G_{k}^{k}\cdot x_{k+1}\cdot G_{k+1}^{k-1}}-(k-1)G_{k+1}\\
+						   = & 2k\cdot\sqrt[2k]{G_{k+1}^{k+1}\cdot G_{k-1}^{k-1}}-(k-1)G_{k+1}\\
+						   = & 2k\cdot G_{k+1}-(k-1)G_{k+1}\\
+						   = & (k+1)G_{k+1}.
+					\end{array}
+					$$
+
+					即有$A_{k+1}\geq G_{k+1}.$
+
+			\end{enumerate}
+
+			于是有$\displaystyle \forall x_1, x_2, \cdots, x_n \in \mathbf{R}^{+}, n \in \mathbf{N}^{*}\cap[2, +\infty): \frac{1}{n}\sum_{i=1}^{n}{x_i}\geq\sqrt[n]{\prod_{i=1}^{n}{x_i}}.$
+
+		~\\
+
+		\item 求证：$\displaystyle\left(1+\frac{1}{n}\right)^n<\left(1+\frac{1}{n+1}\right)^{n+1}$，其中$n\in\mathbf{N}^{*}.$
+
+			$$
+			\begin{array}{rcl}
+				\text{左}&=&\left(1+\frac{1}{n}\right)^n\cdot 1\\
+				&\leq&\left[\frac{n\cdot\left(1+\frac{1}{n}\right)+1}{n+1}\right]^{n+1}\\
+				&=&\left(\frac{n+2}{n+1}\right)^{n+1}\\
+				&=&\left(1+\frac{1}{n+1}\right)^{n+1}.\\
+			\end{array}
+			$$
+
+			等号成立当且仅当$1+\frac{1}{n}=1$无法取到.
+
+			$\therefore$左$<$右.
+
+			~\\
+
+			求证：$\left(1+\frac{1}{n}\right)^n<3.$
+
+			$$
+			\begin{array}{rcl}
+				\left(1+\frac{1}{n}\right)^n&=&C_n^0\cdot 1^n + C_n^1\cdot1^{n-1} \left(\frac{1}{n}\right)^1 + C_n^2\cdot1^{n-2} \left(\frac{1}{n}\right)^2 + \cdots + C_n^n \left(\frac{1}{n}\right)^n\\
+				&=&2+\frac{n(n-1)}{2!}\cdot\frac{1}{n^2}+\frac{n(n-1)(n-2)}{3!}\cdot\frac{1}{n^3}+\cdots+\frac{n!}{n!}\cdot{1}{n^n}\\
+				&<&2+\frac{1}{2!}+\frac{1}{3!}+\cdots+\frac{1}{n!}\\
+				&<&2+\frac{1}{1\times2}+\frac{1}{2\times3}+\cdots+\frac{1}{(n-1)n}\\
+				&=&2+\left(1-\frac{1}{n}\right)\\
+				&<&3.
+			\end{array}
+			$$
+
+			~\\
+
+			数列单调递增+数列收敛$\Rightarrow$数列存在极限.
+
+			$$
+			\lim_{n\rightarrow \infty}{\left(1+\frac{1}{n}\right)^n}=e\approx 2.718.
+			$$
+
+		~\\
+
+		\item 设$a, b, c\in\mathbf{R}^{+}, abc=1$. 求证：$\left(a-1+\frac{1}{b}\right)\left(b-1+\frac{1}{c}\right)\left(c-1+\frac{1}{a}\right)\leq 1$.
+
+			法一：（未完成）
+
+			$$
+			\begin{array}{rcl}
+				S&=&(a-abc+ac)(b-abc+ab)(c-abc+bc)\\
+				&=&(1-bc+c)(1-ac+a)(1-ab+b)\\
+				&=&\displaystyle\left(1-\frac{1}{a}+c\right)\left(1-\frac{1}{b}+a\right)\left(1-\frac{1}{c}+b\right),
+			\end{array}
+			$$
+			$$
+			\begin{array}{rcl}
+				S^2&=&\displaystyle\left[a^2-\left(1-\frac{1}{b}\right)^2\right]\left[b^2-\left(1-\frac{1}{c}\right)^2\right]\left[c^2-\left(1-\frac{1}{a}\right)^2\right]\\
+				&\leq&a^2b^2c^2\text{ （负数？）}\\
+				&=&1.
+			\end{array}
+			$$
+
+			若$\displaystyle a^2-\left(1-\frac{1}{b}\right)^2, b^2-\left(1-\frac{1}{c}\right)^2, c^2-\left(1-\frac{1}{a}\right)^2$均为非负，则$S^2\leq 1$有$S\leq 1$.
+
+			若三者中有两负一正，？.
+			~\\
+
+			法二：设$\displaystyle a=\frac{y}{x}, b=\frac{x}{z}, c=\frac{z}{y} (x,y,z\in\mathbf{R}^+)$，
+
+			$$
+			\begin{array}{rcl}
+				\text{左}&=&\displaystyle\left(\frac{y}{z}-1+\frac{z}{x}\right)\left(\frac{x}{z}-1+\frac{y}{z}\right)\left(\frac{z}{y}-1+\frac{x}{y}\right)\\
+				&=&(y+z-x)(x+y-z)(z+x-y).
+			\end{array}
+			$$
+
+			若三者均为非负，则有
+
+			$$
+			\left\{
+				\begin{array}{rcl}
+					(y+z-x)(x+y-z)&\leq&y^2\\
+					(x+y-z)(z+x-y)&\leq&x^2\\
+					(z+x-y)(y+z-x)&\leq&z^2\\
+				\end{array}
+			\right.\Rightarrow(y+z-x)^2(x+y-z)^2(z+x-y)^2\leq x^2y^2z^2
+			$$
+
+			若有一个负数，则左$<0\leq 1$.
+
+			得证.
+
+		~\\
+
+		\item $a, b, c\in\mathbf{R}^+, abc=1$. 求证：$a+b+c\leq a^2+b^2+c^2.$
+
+			$$
+			\begin{array}{rcl}
+				a^2+b^2+c^2&\geq&\frac{(a+b+c)^2}{3}\\
+				&=&\frac{a+b+c}{3}\cdot 3\sqrt[3]{abc}\\
+				&=&a+b+c.
+			\end{array}
+			$$
+
+		~\\
+
+		\item 设$a_1, a_2, \cdots, a_{2016} \in \mathbf{R}, 9a_i>11a_{i+1}^2 (i=1,2,\cdots,2015).$ 求：$\displaystyle\left[\left(a_1-a_2^2\right)\left(a_2-a_3^2\right)\cdots\left(a_{2015}-a_{2016}^2\right)\left(a_{2016}-a_1^2\right)\right]_{\max}$.
+
+			由已知，$\displaystyle a_i-a_{i+1}^2\geq\frac{11}{9}a_{i+1}^2-a_{i+1}^2\geq0 (i\in1, 2, \cdots, 2015).$
+
+			求最大值，不妨令$a_{2016}-a_1^2>0，$
+
+			原式$\displaystyle\leq\left[\frac{\sum_{k=1}^{2016}\left(a_k-a_{k+1}^2\right)}{2016}\right]^{2016}=\left[\frac{\sum_{k=1}^{2016} a_k-\sum_{k=1}^{2016} a_{k+1}^2}{2016}\right]^{2016}$.
+
+			$a_k-a_k^2\leq\frac{1}{4} (k=1, 2, \cdots, 2016)$
+
+			$\displaystyle \therefore \frac{\sum_{k=1}^{2016}\left(a_k-a_k^2\right)}{2016}\leq\frac{1}{4},$
+
+			$\therefore$原式$\leq\displaystyle\frac{1}{4^{2016}},$
+
+			当且仅当$a_1=a_2=\cdots=a_{2016}=\frac{1}{2}.$
+
+		~\\
+
+		\item 设$a_1, a_2, \cdots, a_n (n\geq 2)$为正实数，有$a_1+a_2+\cdots+a_n<1$. 求证：
+
+			$$\frac{a_1a_2\cdots a_n[1-(a_1+a_2+\cdots+a_n)]}{(a_1+a_2+\cdots+a_n)(1-a_1)(1-a_2)\cdots(1-a_n)}\leq\frac{1}{n^{n+1}}$$
+
+			设$l=a_1+a_2+\cdots+a_{n+1}$, 有$a_{n+1}>0$.
+
+			$$
+			\begin{array}{rcl}
+			\text{左}&=&\displaystyle\frac{a_1 a_2 \cdots a_n a_{n+1}}{(a_1+a_2+\cdots+a_n)(a_2+a_3+\cdots+a_{n+1})(a_1+a_3+\cdots+a_{n+1})\cdots(a_1+a_2+\cdots+a_{n-1}+a_{n+1})}\\
+			&\leq&\displaystyle\frac{\prod_{k=1}^{n+1}{a_k}}{n\sqrt[n]{a_1a_2\cdots a_n}\cdot n\sqrt[n]{a_2a_3\cdots a_{n+1}}\cdots n\sqrt[n]{a_1 a_2 \cdots a_{n-1} a_{n+1}}}\\
+			&=&\displaystyle\frac{\prod_{k=1}^{n+1}{a_k}}{n^{n+1}\prod_{k=1}^{n+1}{a_k}}\\
+			&=&\displaystyle\frac{1}{n^{n+1}}.
+			\end{array}
+			$$
+
+		~\\
+
+		\item $a, b, c, d, e\geq -1, a+b+c+d+e=5, S=(a+b)(b+c)(c+d)(d+e)(e+a).$ 求$S_{\min}$.
+
+			考虑$S<0$，考虑正负号.
+
+			\begin{enumerate}[label=(\arabic*)]
+				\item 两正三负
+					三个负数$\geq -2$，两个正数之和$\leq 16$.
+
+					$\Sigma = 10$, 两个正数之积$\leq 64$.
+
+					考虑$a=b=c=d=-1, e=9$有$S_{\min1}=-512$
+
+				\item 四正一负
+					负数$\geq -2$，四个正数之和$\leq 12 \Rightarrow$之积$\leq 34$ 有$S\geq -162.$
+
+				\item 五负（舍）
+
+			\end{enumerate}
+
+			综上，$S_{\min}=-512, a=b=c=d=-1, e=9.$
+
+		~\\
+
+		\item $a, b, c\in(0,1], \lambda \in \mathbf{R},$有$\displaystyle \frac{\sqrt{3}}{\sqrt{a+b+c}}\geq1+\lambda(1-a)(1-b)(1-c)$恒成立，求$\lambda_{\max}.$
+
+			即$\displaystyle\frac{\frac{\sqrt{3}}{\sqrt{a+b+c}}-1}{(1-a)(1-b)(1-c)}\geq\lambda$，
+
+			即$\text{左}_{\min}\geq\lambda.$
+
+			$\displaystyle\text{左}\geq\frac{\frac{\sqrt{3}}{\sqrt{a+b+c}}-1}{\left(\frac{3-a-b-c}{3}\right)^3}.$
+
+			记$a+b+c=3k, k\in(0,1]$，
+
+			$\displaystyle\text{左}\geq\frac{\frac{\sqrt{3}}{\sqrt{3}k}-1}{(1-k)^3}=\frac{\frac{1}{k}-1}{(1-k^2)^3}=\frac{1}{k(1-k)^2(1+k)^3}.$
+
+			记$1+k=t$，
+
+			$\displaystyle\text{原式}=(t-1)(2-t)^2t^3=t^6-5t^5+8t^4-4t^3\overset{\Delta}{=}g(t)$，
+
+			$g'(t)=6t^5-25t^4+32t^3-12t^2=t^2(6t^3-25t^2+32t-12)=t^2(t-2)(2t-3)(3t-2)=0$，
+
+			解得$\displaystyle t=\frac{3}{2}, g(t)=\frac{1}{2}$，
+
+			$\displaystyle \therefore \text{左}\geq \frac{64}{27}$，
+
+			即$\displaystyle \lambda_{\max}=\frac{64}{27}.$
+
+	\end{enumerate}
+\end{document}
