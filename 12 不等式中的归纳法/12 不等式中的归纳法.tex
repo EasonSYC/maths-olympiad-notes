@@ -1,0 +1,255 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 12 不等式中的归纳法}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年12月25日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 设$a_1, a_2, \cdots, a_n$为非负数, 求证: $$\sqrt{a_1 + a_2 + \cdots + a_n} + \sqrt{a_1 + a_2 + \cdots + a_{n-1}} + \cdots + \sqrt{a_1 + a_2} + \sqrt{a_1} \geq \sqrt{n^2 a_1 + (n-1)^2 a_2 + \cdots + 2^2 a_{n-1} + a_n}.$$
+			~\\
+
+			当$n=1$时, 原不等式显然成立.
+
+			若$n=k, k\in \mathbb{N}^{*}$时原不等式成立, 即
+
+			$$\sqrt{a_1 + a_2 + \cdots + a_k} + \sqrt{a_1 + a_2 + \cdots + a_{k-1}} + \cdots + \sqrt{a_1 + a_2} + \sqrt{a_1} \geq \sqrt{k^2 a_1 + (k-1)^2 a_2 + \cdots + 2^2 a_{k-1} + a_k}, \eqno{(1)}$$
+
+			只需证当$n=k+1$时
+
+			$$\sqrt{a_1 + a_2 + \cdots + a_{k+1}} + \sqrt{a_1 + a_2 + \cdots + a_{k}} + \cdots + \sqrt{a_1 + a_2} + \sqrt{a_1} \geq \sqrt{(k+1)^2 a_1 + (k)^2 a_2 + \cdots + 2^2 a_{k} + a_{k+1}}. \eqno{(2)}$$
+
+			(2) - (1), 即证
+
+			$$\sqrt{a_1 + \cdots + a_{k+1}} + \sqrt{k^2 a_1 + (k-1) a_2 + \cdots + a_k} \geq \sqrt{(k+1)^2 a_1 + k^2 a_2 + \cdots + 2^2 a_k + a_{k+1}}.$$
+
+			平方, 只需证
+
+			$$2\sqrt{a_1 + \cdots + a_{k+1}} \sqrt{k^2 a_1 + \cdots + a_k} \geq 2ka_1 + 2(k-1)a_2 + \cdots + 2a_k.$$
+
+			由 Cauchy 不等式, 得证.
+
+		~\\
+
+		\item 设整数$n \geq 2$, 且实数$x_1, x_2, \cdots, x_n \in [0, 1]$, 求证: $$\sum_{1\leq k<l\leq n} kx_k x_l \leq \frac{n-1}{3} \sum_{k=1}^{n} kx_k.$$
+			~\\
+
+			当$n=2$时, 左$=x_1 x_2$, 右$=\dfrac{1}{3} (x_1 + 2x_2),$ 成立.
+
+			若$n$时成立, 只需证其对$n+1$也成立, 只需证
+
+			$$x_{n+1} (x_1 + 2x_2 + \cdots + nx_n) \leq \frac{n}{3} (n+1)x_{n+1} + \frac{1}{3} (x_1 + 2x_2 + \cdots + nx_n),$$
+
+			即证
+
+			$$3x_{n+1} (x_1 + \cdots + nx_n) \leq n(n+1) x_{n+1} + (x_1 + \cdots + nx_n).$$
+
+			有
+
+			$$3kx_k x_{n+1} \leq kx_k + 2kx_{n+1}, (k=1, 2, \cdots, n)$$
+
+			相加即得证.
+
+		~\\
+
+		\item $x_1 \geq 2x_2 \geq \cdots \geq 2^{n-1} x_n \geq 0$, $$\sum_{i=1}^{n} \frac{x_i}{\sqrt{i}}=1,$$ 证明: $$\sum_{i=1}^{n} x_i^2 \leq 1.$$
+			~\\
+
+			即证
+
+			$$\sum_{i=1}^{n} x_i^2 \leq \left(\sum_{i=1}^{n} \frac{x_i}{\sqrt{i}}\right)^2.$$
+
+			考虑$n=1$, 显然成立.
+
+			假设$n=k$时成立, 只需证$n=k+1$时成立, 即证
+
+			$$x_{k+1}^2 \leq \frac{x_{k+1}}{\sqrt{x_{k+1}}} \left[\frac{x_{k+1}}{\sqrt{k+1}} + 2\left(\frac{x_1}{\sqrt{1}} + \frac{x_2}{\sqrt{2}} + \cdots + \frac{x_k}{\sqrt{k}}\right)\right],$$
+ 
+			即证
+
+			$$\sqrt{k+1} x_{k+1} \leq \frac{x_{k+1}}{\sqrt{k+1}} + 2\sum_{i=1}^{k} \frac{x_i}{\sqrt{i}},$$
+
+			即证
+
+			$$\frac{k}{\sqrt{k+1}} x_{k+1} \leq 2\sum_{i=1}^{k} \frac{x_i}{\sqrt{i}}.$$
+
+			有
+
+			$$2^{i-1} x_i \geq 2^k \cdot x_{k+1},$$
+
+			故
+
+			$$x_i \geq 2^{k-i+1} x_{k+1},$$
+
+			$$2\sum_{i=1}^{k} \frac{x_i}{\sqrt{i}} \geq 2\sum_{i=1}^{k} \frac{2^k - i + 1}{\sqrt{i}} x_{k+1} \geq 2\frac{2^{k-1+1}}{\sqrt{1}} x_{k+1} = 2^{k+1} x_{k+1} \geq \frac{k}{\sqrt{k+1}} x_{k+1},$$
+
+			得证.
+
+		~\\
+
+		\item 已知$a_1, a_2, \cdots, a_n \geq 0 (n\geq 4)$, 求证: $$4\sum_{i=1}^{n} a_{i+1} a_i \leq \left(\sum_{i=1}^{n} a_i\right)^2, $$ 其中$a_{n+1} = a_1$.
+			~\\
+
+			考虑$n=4$, $$\text{左} = 4(a_1 + a_3) (a_2 + a_4) \leq [(a_1 + a_3) + (a_2 + a_4)]^2 = \text{右}.$$
+
+			若$n=k$时成立, 只需证$n=k+1$时成立.
+
+			不妨设$a_{k+1} = \min \{a_1, a_2, \cdots, a_{k+1}\}$, 只需证
+
+			$$4(a_k a_{k+1} + a_{k+1} a_1 - a_k a_1) \leq a_{k+1} [a_{k+1} + 2(a_1 + \cdots + a_k)].$$
+
+			只需证
+
+			$$\text{右} \geq a_{k+1} (a_{k+1} + 2a_1 + 2a_k) \geq 4(a_k a_{k+1} + a_{k+1} a_1 - a_k a_1),$$
+
+			即证
+
+			$$a_{k+1}^2 - 2(a_1 + a_k) a_{k+1} + 4 a_1 a_k \geq 0,$$
+
+			即证
+
+			$$(a_{k+1} - 2a_1) (a_{k+1} - 2a_k) \geq 0,$$
+
+			得证.
+
+		~\\
+
+		\item 设正整数$n \geq 4$, 集合$\{x_1, x_2, \cdots, x_n\} = \{y_1, y_2, \cdots, y_n \} = \{1, 2, \cdots, n\},$ 则$$\sum_{i=1}^{n} x_i y_i$$的可能值有多少种?
+			~\\
+
+			不妨设$x_1 = 1, x_2 = 2, \cdots, x_n = n$,
+
+			由排序不等式, 有
+
+			\begin{align*}
+				\sum_{i=1}^{n} x_i y_i &\geq \sum_{i=1}^{n} i(n+1-i)\\
+				&= (n+1)\sum_{i=1}^{n} i - \sum_{i=1}^{n} i^2\\
+				&= (n+1) \cdot \frac{n(n+1)}{2} - \frac{n(n+1)(2n+1)}{6},
+			\end{align*}
+
+			又
+
+			$$\sum_{i=1}^{n} x_i y_i \leq \sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}.$$
+
+			有
+
+			$$\sum_{i=1}^{n} x_i y_i = \sum_{i=1}^{k} i y_i,$$
+
+			考虑是否能取遍区间内所有的值.
+
+			$n=4$时显然可以.
+
+			假设$n=k$时可以, 下证$n=k+1$时同样可以取遍.
+
+			取$y_{k+1} = k+1$, 则
+
+			$$\sum_{i=1}^{k+1} i y_i = \sum_{i=1}^{k} i y_i + (k+1)^2$$
+
+			能取遍
+
+			$$\left[\frac{k(k+1)(k+2)}{6}+(k+1)^2, \frac{(k+1)(k+2)(2k+3)}{6}\right]$$
+
+			中所有整数.
+
+			取$y_{k+1}=1$, 则有
+
+			$$\sum_{i=1}^{k+1} i y_i = \sum_{i=1}^{k} i y_i + (k+1) = \sum_{i=1}^{k} i (y_i - 1) + \frac{k(k+1)}{2} + (k+1),$$
+
+			又$y_1 - 1, y_2 - 1, \cdots, y_{k-1}$是$1, 2, \cdots, k$的一个排列, 由归纳假设, 有
+
+			$$\sum_{i=1}^{k} i (y_i-1)$$
+
+			能取遍
+
+			$$\left[\frac{k(k+1)(k+2)}{6}, \frac{k(k+1)(2k+1)}{6}+\frac{(k+1)(k+2)}{2}\right]$$
+
+			中所有整数.
+
+		\item $n$为给定正整数, 已知正整数$a_1, a_2, \cdots, a_n (a_1 \leq a_2 \leq \cdots \leq a_n)$满足$$\sum_{i=1}^{n} \frac{1}{a_i} < 1,$$ 求证: 当$$\sum_{i=1}^{n} \frac{1}{a_i}$$取得最大值时, 有$a_1 = 2m a_{k+1} = a_1 a_2 \cdots a_k + 1 (k=1, 2, \cdots, n-1)$.
+			~\\
+
+			设$\gamma_1 = 2, \gamma_{k+1} = \gamma_1 \gamma_2 \cdots \gamma_{k+1}$, 则有
+
+			$$\frac{1}{\gamma_1} + \frac{1}{\gamma_2} + \cdots + \frac{1}{\gamma_n} = 1 - \frac{1}{\gamma_1 \gamma_2 \cdots \gamma_n}.$$
+
+			要证
+
+			$$\sum_{i=1}^{n} \frac{1}{a_i} \leq 1-\frac{1}{a_1 a_2 \cdots a_n} \leq 1-\frac{1}{\gamma_1 \gamma_2 \cdots \gamma_n} = \frac{1}{\gamma_1} + \cdots + \frac{1}{\gamma_n},$$
+
+			只需证
+
+			$$a_1 a_2 \cdots a_n \leq \gamma_1 \gamma_2 \cdots \gamma_n.$$
+
+			$n=2$时显然成立.
+
+			假设$n \leq k$时成立, 则$n=k+1$时, 若命题不成立, 只需证 $$m\sqrt[n]{\frac{a_1 a_2 \cdots a_n}{\gamma_1 \gamma_2 \cdots \gamma_n}} \leq \frac{a_1}{\gamma_1} + \frac{a_2}{\gamma_2} + \cdots + \frac{a_n}{\gamma_n} \leq n.$$
+
+			有
+
+			$$\sum_{i=1}^{k+1} \frac{1}{a_i} < 1,$$
+
+			$$\sum_{i=1}^{k+1} \frac{1}{a_i} > \sum_{i=1}^{n} \frac{1}{\gamma_i}. \eqno{(*)}$$
+
+			由归纳假设, 易得
+
+			\begin{align*}
+				\frac{1}{a_1} &\leq \frac{1}{\gamma_1},\\
+				\frac{1}{a_1} + \frac{1}{a_2} &\leq \frac{1}{\gamma_1} + \frac{1}{\gamma_2},\\
+				&\vdots\\
+				\frac{1}{a_1} + \frac{1}{a_2} + \cdots + \frac{1}{a_n} &\leq \frac{1}{\gamma_1} + \frac{1}{\gamma_2} + \cdots + \frac{1}{\gamma_n}.
+			\end{align*}
+
+			记$A_i = \dfrac{1}{a_1} + \dfrac{1}{a_2} + \cdots + \dfrac{1}{a_i}, \Gamma_i = \dfrac{1}{\gamma_1} + \dfrac{1}{\gamma_2} + \cdots + \dfrac{1}{\gamma_i},$
+
+			则有
+
+			$$A_1 \leq \Gamma_1, A_2 \leq \Gamma_2, \cdots, A_k \leq \Gamma_k, A_{k+1} > \Gamma_{k+1},$$
+
+			则
+
+			\begin{align*}
+				\sum_{i=1}^{k+1} \frac{a_i}{\gamma_i} &= \sum_{i=1}^{k+1} \left(\Gamma_i - \Gamma_{i-1}\right) a_i\\
+				&= \sum_{i=1}^{k} \Gamma_i (a_i - a_{i+1}) + \Gamma_{k+1} a_{k+1}\\
+				&\leq \sum_{i=1}^{k} A_i (a_i - a_{i-1}) + A_{k+1} a_{k+1}\\
+				&= \sum_{i=1}^{k+1} (A_i - A_{i-1})a_i\\
+				&= k+1.
+			\end{align*}
+
+			由均值不等式, 有
+
+			$$\prod_{i=1}^{k+1} \frac{a_i}{\gamma_i} \leq \left(\frac{\sum_{i=1}^{k+1} \frac{a_i}{\gamma_i}}{k+1}\right)^{k+1}=1,$$
+
+			故有
+
+			$$\prod_{i=1}^{k+1} a_i \leq \prod_{i=1}^{k+1} \gamma_i,$$
+
+			则
+
+			$$\frac{1}{a_1} + \cdots + \frac{1}{a_{k+1}} \leq 1-\frac{1}{a_1 a_2 \cdots a_n} \leq 1 - \frac{1}{\gamma_1 \gamma_2 \cdots \gamma_{k+1}} = \frac{1}{\gamma_1} + \frac{1}{\gamma_2} + \cdots + \frac{1}{\gamma_{k+1}},$$
+
+			与(*)矛盾.
+
+			故命题在$n=k+1$时成立, 得证.
+
+	\end{enumerate}
+\end{document}
