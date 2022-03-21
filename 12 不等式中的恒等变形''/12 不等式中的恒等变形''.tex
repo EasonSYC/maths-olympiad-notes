@@ -1,0 +1,75 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 12 不等式中的恒等变形''}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年12月25日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 设$1\geq x_1 \geq x_2 \geq \cdots \geq x_n > 0$, $1\geq y_1\geq y_2\geq \cdots\geq y_n>0$, 且对任意的$1\leq k\leq n$, 有$$\prod_{i=1}^{k} x_i \leq \prod_{i=1}^{k} y_i.$$求证: $$\prod_{i=1}^{n} (1-x_i) \geq \prod_{i=1}^{n} (1-y_i).$$
+			~\\
+
+			由已知, 有
+
+			$$\prod_{i=1}^{k} \frac{y_i}{x_i} \geq 1.$$
+
+			由均值不等式有
+
+			$$\sum_{i=1}^{k} \frac{y_i}{x_i} \geq k\sqrt[k]{\prod_{i=1}^{k} \frac{y_i}{x_i}} \geq k.$$
+
+			要证
+
+			$$\prod_{i=1}^{n} (1-x_i) \geq \prod_{i=1}^{n} (1-y_i),$$
+
+			只需证
+
+			$$\prod_{i=1}^{n} \frac{1-y_i}{1-x_i} \geq 1.$$
+
+			由
+
+			$$\sum_{i=1}^{n} \frac{1-y_i}{1-x_i} \geq n\sqrt[n]{\prod_{i=1}^{n}\frac{1-y_i}{1-x_i}},$$
+
+			只需证
+
+			$$\sum_{i=1}^{n} \frac{1-y_i}{1-x_i}\leq n,$$
+
+			即证
+
+			$$\sum_{i=1}^{n} \frac{y_i - x_i}{1 - x_i} \geq 0.$$
+
+			有
+
+			$$\sum_{i=1}^{k} \frac{y_i-x_i}{x_i} \geq 0,$$
+
+			故
+
+			$$\sum_{i=1}^{k} \frac{y_i - x_i}{x_i} \frac{x_i}{1-x_i} \geq 0.$$
+
+			由 Abel 求和公式,
+
+			$$\sum_{i=1}^{n} \frac{y_i-x_i}{1-x_i} \geq 0, \frac{x_i}{1-x_i}=0,$$
+
+			故得证.
+
+	\end{enumerate}
+\end{document}
