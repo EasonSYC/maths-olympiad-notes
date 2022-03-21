@@ -1,0 +1,126 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 10 多元不等式'}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年12月11日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 已知实数$x_1, x_2, \cdots, x_{100}$满足$x_1 + x_2 + \cdots + x_{100}=1$, 且$|x_{k+1}-x_k|\leq\dfrac{1}{50}$, $k=1, 2, \cdots, 99$. 求证: 存在整数$1\leq i_1 < i_2 < \cdots < i_{50} \leq 100$, 使得$$\frac{49}{100} \leq x_{i_1} + x_{i_2} + \cdots + x_{i_{50}} \leq \frac{51}{100}.$$
+			~\\
+
+			即考虑数对$(x_1, x_2), (x_3, x_4), \cdots, (x_{99}, x_{100}).$
+
+			记
+
+			$$b_k = \max\{x_{2k-1}, x_{2k}\}, c_k=\min\{x_{2k-1}, x_{2k}\},$$
+
+			则有
+
+			$$b_1 + b_@ + \cdots + b_{50} \geq \frac{1}{2}, c_1 + c_2 + \cdots + c_{50} \leq \frac{1}{2}.$$
+
+			考察
+
+			$$b_1+b_2+\cdots+b_{50}, c_1+b_2+\cdots+b_{50}, c_1+c_2+\cdots+b_{50}, \cdots, c_1+c_2+\cdots+c_{50},$$
+
+			有相邻两个数之差$\leq\dfrac{1}{50}$ (介值定理).
+
+			故得证.
+
+		~\\
+
+		\item 已知实数$p, q, r, s$满足$p+q+r+s=9, p^2+q^2+r^2+s^2=21, p\geq q\geq r\geq s$, 证明: $$pq-rs\geq 2.$$
+			~\\
+
+			设$p=x+\alpha, q=x-\alpha, r=y+\beta, s=y-\beta$,
+
+			即证$$p - \alpha^2 + \beta^2 \geq 2.$$
+
+			等号成立条件$$p=3, q=2=r=s, m=\frac{1}{4}, \alpha=\frac{1}{2}, \beta=0.$$
+
+			由已知, 有$$\left\{\begin{array}{rcl}x+y&=&\dfrac{9}{2}\\\\x^2+y^2+\alpha^2+\beta^2&=&\dfrac{21}{2}\\\alpha \geq 0, \beta \geq 0, && x\geq y+\alpha+\beta\end{array}\right.$$
+
+			故有$$2m\geq \alpha + \beta.$$
+
+			设$x=\dfrac{9}{4}+m, y=\dfrac{9}{4}-m$, 则有
+
+			$$2\left(\frac{82}{46}+m^2\right)+\alpha^2+\beta^2=\frac{21}{2},$$
+
+			即
+
+			$$2m^2+\alpha^2+\beta^2=\frac{3}{8}.$$
+
+			即证$$2m^2+9m+2\beta^2 \geq \frac{19}{8},$$
+
+			即证$$2m^2+9m\geq\frac{19}{8}-2\beta^2,$$
+
+			只需证$$2m^2+9m\geq \frac{19}{8},$$
+
+			即证$$m\geq\frac{1}{4}.$$
+
+			有
+
+			\begin{align*}
+				\frac{3}{8} &= 2m^2+\alpha^2+\beta^2 \\
+				            &\leq 2m^2+(\alpha + \beta)^2\\
+				            &\leq 6m^2,\\
+			\end{align*}
+
+			即
+
+			$$m\geq\frac{1}{4}.$$
+
+			则有原不等式成立.
+
+		~\\
+
+		\item 给定正整数$n\geq 2$, 求最大的实数$\lambda$, 使得对任意的正实数$a_1, a_2, \cdots, a_n$有$$\frac{a_1^2 + a_2^2 + \cdots + a_n^2}{2} \geq \left(\frac{a_1 + a_2 + \cdots + a_n}{n}\right)^2 + \lambda (a_1 - a_n)^2.$$
+			~\\
+
+			有
+
+			\begin{align*}
+				\frac{a_1^2 + a_2^2 + \cdots + a_n^2}{n} - \left(\frac{a_1 + a_2 + \cdots + a_n}{n}\right)^2 &= \frac{1}{n^2} \sum_{1\leq i<j \leq n} (a_i - a_j^2)\\
+				&\geq \frac{1}{n^2} \left\{(a_1-a_n)^2 + \sum_{k=2}^{n-1} \left[(a_1 - a_k)^2 + (a_k - a_n)^2\right]\right\}\\
+				&\geq \frac{1}{n^2} \left[(a_1 - a_n)^2 + \sum_{k=2}^{n-1} \frac{(a_1-a_n)^2}{2}\right]\\
+				&= \frac{1}{2n} (a_1 - a_n) ^ 2.\\
+			\end{align*}
+
+			故$\lambda = \dfrac{1}{2n}$符合条件.
+
+			下证$\lambda \leq \dfrac{1}{2n}$.
+
+			令$a_1 = 1, a_2 = a_3 = \cdots = a_{n-1} = 0, a_n = -1$, 得:
+
+			$$\frac{2}{n} \geq 0+4\lambda,$$
+
+			即
+
+			$$\lambda \leq \frac{1}{2n}.$$
+
+			故有
+
+			$$\lambda_{\max}=\frac{1}{2n}.$$
+
+	\end{enumerate}
+\end{document}
