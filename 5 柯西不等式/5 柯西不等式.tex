@@ -1,0 +1,393 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 5 柯西不等式}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年10月30日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\textbf{Cauchy–Schwarz 不等式在 $\mathbf{R}^{n}$ 上的特殊化}: $\forall n \in \mathbf{Z} \cap [2, +\infty), i \in \mathbf{Z} \cap [1, n], a_i \in \mathbf{R}, b_i \in \mathbf{R}$有:
+
+	$$
+	\sum_{i=1}^{n}{a_i^2}\cdot\sum_{i=1}^{n}{b_i^2}\geq\left(\sum_{i=1}^{n}{a_i b_i}\right)^2,
+	$$
+
+	等号成立当且仅当$\displaystyle \frac{a_1}{b_1}=\frac{a_2}{b_2}=\cdots=\frac{a_n}{b_n}$ (可以认为$\displaystyle \frac{\neq 0}{0}=\text{无穷}, \frac{0}{0}=\text{任意实数}$).
+	~\\
+
+	\textbf{Carlson 不等式 (Cauchy-Schwarz 不等式在二维矩阵上的推广)}: $\forall n, m\in \mathbf{Z} \cap [2, +\infty), i \in \mathbf{Z} \cap [1, n], j \in \mathbf{Z} \cap [1, m], a_{ij} \in \mathbf{R}^{+}$有:
+
+	$$
+	\prod_{j=1}^{m}\left(\sum_{i=1}^{n}a_{ij}\right)^{\frac{1}{m}}\geq\sum_{j=1}^{m}\prod_{i=1}^{n}a_{ij}^{\frac{1}{m}},
+	$$
+
+	等号成立当且仅当$\displaystyle \forall i\in\mathbf{Z}\cap[1, n-1]: \frac{a_{i1}}{a_{(i+1)1}}=\frac{a_{i2}}{a_{(i+1)2}}=\cdots=\frac{a_{im}}{a_{(i+1)m}}$ (可以认为$\displaystyle \frac{\neq 0}{0}=\text{无穷}, \frac{0}{0}=\text{任意实数}$).
+
+	~\\
+
+	\begin{enumerate}
+		\item 证明$m=3$时的 Carlson 不等式.
+			~\\
+
+			不妨设$a_1^3+a_2^3+\cdots+a_n^3=b_1^3+b_2^3+\cdots+b_n^3=c_1^3+c_2^3+\cdots+c_n^3=1,$ 则原不等式$\Leftrightarrow 1\geq (a_1 b_1 c_1 + a_2 b_2 c_2 + \cdots + a_n b_n c_n )^3.$
+
+			$$
+			\sum_{i=1}^{n}{a_i b_i c_i} \leq \sum_{i=1}^{n} \frac{a_i^3 + b_i^3 + c_i^3}{3} = 1.
+			$$
+
+		~\\
+
+		\item $x, y, z \in \mathbf{R}^{+}, x^2 + y^2 + z^2 = 1$. 求$\displaystyle \left[\frac{x}{1-x^2}+\frac{y}{1-y^2}+\frac{z}{1-z^2}\right]_{\min}$.
+			~\\
+
+			$$\left(\frac{x}{1-x^2}+\frac{y}{1-y^2}+\frac{z}{1-z^2}\right)\left[x^3(1-x^2)+y^3(1-y^2)+z^3(1-z^2)\right]\geq(x^2+y^2+z^2)^2.$$
+
+			$\therefore$有:
+
+			$$\frac{x}{1-x^2}+\frac{y}{1-y^2}+\frac{z}{1-z^2}\geq\frac{1}{x^3(1-x^2)+y^3(1-y^2)+z^3(1-z^2)} \geq ? \frac{3}{2} \sqrt{3}.$$
+
+			$\therefore$只需证
+
+			$$x^3(1-x^2)+y^3(1-y^2)+z^3(1-z^2) \leq \frac{2}{3\sqrt{3}}.$$
+
+			$$
+			\begin{array}{rcl}
+			\displaystyle x^3(1-x^2)\leq \frac{2}{3\sqrt{3}}x^2&\Leftrightarrow&\displaystyle x(1-x^2)\leq\frac{2}{3\sqrt{3}}\\\\
+			&\Leftrightarrow&\displaystyle x^2(1-x^2)(1-x^2)\leq\frac{4}{27}\\\\
+			&\Leftrightarrow&\displaystyle 2x^2(1-x^2)(1-x^2)\leq\frac{8}{27}\\
+			\end{array}
+			$$
+
+			由均值不等式显然成立.
+
+			证毕.
+
+			\textbf{另解}:
+
+			令$k$:
+
+			$$\frac{x}{1-x^2}\geq kx^2+m,$$
+
+			即
+
+			$$\frac{\sqrt{x}}{1-x}\geq kx+m (x\in[0, 1)).$$
+
+			记
+
+			$$f(x)=\frac{\sqrt{x}}{1-x},$$
+
+			有
+
+			$$k=f'\left(\frac{1}{3}\right).$$
+
+			而
+
+			$$f'(x)=\frac{\frac{1}{2}\cdot\frac{1}{\sqrt{x}}\cdot(1-x)-\sqrt{x}(-1)}{(1-x)^2},$$
+
+			$\therefore k=\frac{3\sqrt{3}}{2},$
+
+			代入有$m=0.$
+
+		~\\
+
+		\item $\forall a, b, c\in\mathbf{R}^{+}$. 证明: $\displaystyle \sum_{\mathrm{cyc}} \frac{a}{b+c} + \sqrt{\frac{\sum_{\mathrm{cyc}}ab}{\sum_{\mathrm{cyc}}a^2}}\geq \frac{5}{2}.$
+			~\\
+
+			$\displaystyle \left(\sum_{\mathrm{cyc}} \frac{a}{b+c}\right)\left(\sum_{\mathrm{cyc}}a(b+c)\right) \geq \left(\sum_{\mathrm{cyc}}a\right)^2.$
+
+			$\therefore$有:
+
+			$$
+			\begin{array}{rcl}
+			\text{左边}&\geq&\displaystyle \frac{\sum_{\mathrm{cyc}}a^2}{2\sum_{\mathrm{cyc}}ab}+\sqrt{\frac{\sum_{\mathrm{cyc}}ab}{\sum_{\mathrm{cyc}}a^2}}\\
+			&=&\displaystyle 1+\frac{a^2+b^2+c^2}{2(ab+bc+ca)}+\sqrt{\frac{ab+bc+ca}{a^2+b^2+c^2}}\\
+			&=&\displaystyle 1+\frac{a^2+b^2+c^2}{2(ab+bc+ca)}+\frac{1}{2}\sqrt{\frac{ab+bc+ca}{a^2+b^2+c^2}}+\frac{1}{2}\sqrt{\frac{ab+bc+ca}{a^2+b^2+c^2}}\\
+			&\geq&\displaystyle 1+3\sqrt[3]{\frac{1}{2}\cdot\frac{1}{2}\cdot\frac{1}{2}}\\
+			&=&\displaystyle \frac{5}{2}.
+			\end{array}
+			$$
+
+		~\\
+
+		\item $x_1, x_2, x_3 \in \mathbf{R}^{*}, x_1+x_2+x_3=1$. 求$\displaystyle (x_1+3x_2+5x_3)\left(x_1+\frac{x_2}{3}+\frac{x_3}{5}\right)$的最值.
+			~\\
+
+			下求\textbf{最小值}.
+
+			由 Cauchy-Schwarz 不等式有:
+
+			$$
+			(x_1+3x_2+5x_3)\left(x_1+\frac{x_2}{3}+\frac{x_3}{5}\right)\geq(x_1+x_2+x_3)^2=1,
+			$$
+
+			等号成立当且仅当$\displaystyle \frac{x_1}{x_1}=\frac{3x_2}{\frac{x_2}{3}}=\frac{5x_3}{\frac{x_3}{5}}$即$x_1=1, x_2=0, x_3=0$.
+
+			下为\textbf{最大值}的草稿.
+
+			$$
+			(x_1+3x_2+5x_3)\left(x_1+\frac{x_2}{3}+\frac{x_3}{5}\right)\leq M(x_1+x_2+x_3)^2,
+			$$
+
+			即
+
+			$$
+			(M-1)x_1^2+(M-1)x_2^2+(M-1)x_3^2\geq\left(\frac{10}{3}-2M\right)x_1 x_2+\left(\frac{26}{5}-2M\right)x_1 x_3+\left(\frac{34}{15}-2M\right) x_2 x_3.
+			$$
+
+			显然有$M>1$. $\displaystyle M\geq \frac{13}{5}$显然成立.
+
+			考虑$\displaystyle \frac{5}{3}\leq M\leq \frac{13}{5},$ 该不等式等价于
+
+			$$
+			(M-1)x_1^2+(M-1)x_2^2+(M-1)x_3^2+\left(2M-\frac{10}{3}\right)x_1 x_2+\left(2M-\frac{34}{15}\right)x_2 x_3\geq\left(\frac{26}{5}-2M\right)x_1 x_3.
+			$$
+
+			令$x_2=0$, 得
+
+			$$
+			(M-1)x_1^2+(M-1)x_3^2\geq\left(\frac{26}{5}-2M\right)x_1 x_3.
+			$$
+
+			$\Delta \leq 0$, 即
+
+			$$\left(\frac{26}{5}-2M\right)^2\leq4(M-1)^2,$$
+
+			即
+
+			$$\frac{16}{5}\cdot\left(\frac{36}{5}-4M\right)\leq 0,$$
+
+			即
+
+			$$M\geq \frac{9}{5}.$$
+
+			下求\textbf{最大值}.
+
+			$$(x_1+3x_2+5x_3)\left(x_1+\frac{x_2}{3}+\frac{x_3}{5}\right)\leq\frac{9}{5}(x_1+x_2+x_3)^2,$$
+
+			即
+
+			$$\frac{4}{5}x_1^2+\frac{4}{5}x_2^2+\frac{4}{5}x_3^2+\frac{4}{15}x_1 x_2+\frac{4}{3}x_2 x_3 \geq \frac{8}{5} x_2 x_3$$
+
+			即
+
+			$$\frac{4}{5}(x_1-x_3)^2+\frac{4}{5}x_2^2+\frac{4}{15}x_1x_2+\frac{4}{3}x_2 x_3\geq 0$$
+
+			显然成立, 等号成立当且仅当$x_1=x_3=\displaystyle \frac{1}{2}, x_2=0$.
+
+			于是原式$\leq\displaystyle\frac{9}{5}$.
+
+		~\\
+
+		\item 求$\sqrt{x+27}+\sqrt{13-x}+\sqrt{x}$的最值.
+			~\\
+
+			$D=[0, 13].$
+
+			下为\textbf{最大值}的草稿.
+
+			$$
+			\left(\sqrt{x+27}+\sqrt{13-x}+\sqrt{x}\right)^2\leq\left[1(x+27)+m(13-x)+nx\right]\left(1+\frac{1}{m}+\frac{1}{n}\right),
+			$$
+
+			有$m=n+1$,
+
+			等号成立当且仅当$x+27=m^2(13-x)=n^2x, \displaystyle x=\frac{13m^2-27}{m^2+1}=\frac{27}{n^2-1},$有$n=2, m=3$.
+
+			下求\textbf{最大值}.
+
+			$$\left(\sqrt{x+27}+\sqrt{13-x}+\sqrt{x}\right)^2\leq[(x+27)+3(13-x)+2x]\left[1+\frac{1}{3}+\frac{1}{2}\right]=121,$$
+
+			等号成立当且仅当$x=9$.
+
+			下求\textbf{最小值}.
+
+			$$\sqrt{x+27}+\sqrt{13-x}+\sqrt{x}=\sqrt{x+27}+\sqrt{13+2\sqrt{x(13-x)}}\geq\sqrt{27}+\sqrt{13}=3\sqrt{3}+\sqrt{13},$$
+
+			等号成立当且仅当$x=0$.
+
+		~\\
+
+		\item $a, b, c, d \in \mathbf{R}, a+2b+3c+4d=\sqrt{10}.$ 求$\displaystyle \left[a^2+b^2+c^2+d^2+(a+b+c+d)^2\right]_{\min}.$
+			~\\
+
+			\textbf{草稿}.
+
+			$$
+			\begin{array}{cl}
+			&\left[a^2+b^2+c^2+d^2+(a+B+c+d)^2\right]\left[(k-1)^2+(2k-1)^2+(3k-1)^2+(4k-1)^2+1^2\right]\\
+			\geq&\left[(k-1)a+(2k-1)b+(3k-1)c+(4k-1)d+(a+b+c+d)\right]^2\\
+			=&k^2(a+2b+3c+4d)^2\\
+			=&10k^2,
+			\end{array}$$
+
+			等号成立当且仅当$\displaystyle \frac{a}{k-1}=\frac{b}{2k-1}=\frac{c}{3k-1}=\frac{d}{4k-1}=\frac{a+b+c+d}{1}.$
+
+			有$\displaystyle \frac{a+b+c+d}{10k-4}=\frac{a+b+c+d}{1}\Rightarrow k=\frac{1}{2}.$
+
+			\textbf{过程}:
+
+			$$
+			\begin{array}{cl}
+			&\displaystyle \left[a^2+b^2+c^2+d^2+(a+b+c+d)^2\right]\left[\frac{1}{4}+0+\frac{1}{4}+1+1\right]\\\\
+			\geq&\displaystyle \left[-\frac{1}{2}a+0+\frac{1}{2}c+d+(a+b+c+d)\right]^2\\\\
+			=&\displaystyle \frac{5}{2}\\
+			\end{array}
+			$$
+
+			$$
+			\Rightarrow
+			a^2+b^2+c^2+d^2+(a+b+c+d)^2\geq 1,
+			$$
+
+			等号成立当且仅当$\displaystyle a=-\frac{1}{2}m, b=0, c=\frac{1}{2}m, d=m$即$\displaystyle a=\frac{\sqrt{10}}{10}, b=0, c=\frac{\sqrt{10}}{10}, d=\frac{\sqrt{10}}{5}.$
+
+		~\\
+
+		\item $a_1, a_2 \cdots a_n$有$\displaystyle \sum_{i=1}^{n}a_i=0.$ 求证: 
+
+			$$\max_{1\leq k\leq n}\left(a_k^2\right)\leq\frac{n}{3}\sum_{i=1}^{n-1}\left(a_i-a_{i+1}\right)^2.$$
+			~\\
+
+			只需证
+
+			$$\forall 1\leq k \leq n: a_k^2\leq\frac{n}{3}\sum_{i=1}^{n-1}\left(a_i-a_{i+1}\right)^2.$$
+
+			记
+
+			$$d_i=a_{i+1}-a_i,$$
+
+			即证
+
+			$$a_k^2\leq\frac{n}{3}\sum_{i=1}^{n-1}d_i^2.$$
+
+			有
+
+			$$
+			\begin{array}{rcl}
+			a_1&=&a_k-(d_{k-1}+\cdots+d_1),\\
+			&\vdots&\\
+			a_{k-2}&=&a_k-(d_{k-1}+d_{k-2}),\\
+			a_{k-1}&=&a_k-d_{k-1},\\
+			a_k&=&a_k,\\
+			a_{k+1}&=&a_k+d_k,\\
+			a_{k+2}&=&a_k+d_k+d_{k+1},\\
+			&\vdots&\\
+			a_n&=&a_k+d_k+d_{k+1}+\cdots+d_{n-1}.\\
+			\end{array}
+			$$
+
+			又有
+
+			$$
+			\begin{array}{rcl}
+			\displaystyle \sum_{i=1}^{n} a_i &=& na_k+(n-k)d_k+(n-k-1)d_{k+1}+d_{n-1}-(k-1)d_{k-1}-(k-2)d_{k-2}-\cdots-d_1\\
+			&=&0,
+			\end{array}
+			$$
+
+			故
+
+			$$
+			\begin{array}{rcl}
+				(n a_k)^2&=&\left[d_1+2d_2+\cdots+(k-1)d_{k-1}-(n-k)d_k-(n-k-1)d_{k+1}-\cdots-d_{n-1}\right]^2\\\\
+				&\leq&\left(d_1^2+d_2^2+\cdots+d_{n-1}^2\right)\left(1^2+2^2+\cdots+(k-1)^2+(n-k)^2+(n-k-1)^2+\cdots+1^2\right)\\\\
+				&\leq&\displaystyle \sum_{i=2}^{n-1}d_i^2 \sum_{i=1}^{n-1} i^2\\\\
+				&=&\displaystyle \sum_{i=1}^{n-1}{d_i^2}\frac{(n-1)n(2n-1)}{6}\\\\
+				&\leq&\displaystyle\sum_{i=1}^{n-1}{d_i^2}\left(\frac{n^3}{3}\right).\\
+			\end{array}
+			$$
+
+			于是有
+
+			$$a_k^2\leq\frac{n}{3}\sum_{i=1}^{n-1}\left(a_i-a_{i+1}\right)^2.$$
+
+			得证.
+
+		~\\
+
+		\item $a_1, a_2 \cdots a_n \in \mathbf{R}^{+}$有$(a_1^2+a_2^2+\cdots+a_n^2)^2>(n-1)(a_1^4+a_2^4+\cdots+a_n^4).$ 求证: 任意三个$a_i$均能构成$\Delta$的三边长.
+			~\\
+
+			使用反证法. 若命题不成立, 不妨设$a_1\geq a_2+a_3$, 目标: $(a_1^2+a_2^2+\cdots+a_n^2)^2\leq(n-1)(a_1^4+a_2^4+\cdots+a_n^4).$
+
+			$$
+			\begin{array}{rcl}
+				\text{左边}&=&\displaystyle \left[\frac{a_1^2+a_2^2+a_3^2}{2}+\frac{a_1^2+a_2^2+a_3^2}{2}+a_4^2+\cdots+a_n^2\right]^2\\\\
+				&\leq&\displaystyle (n-1)\left[\frac{(a_1^2+a_2^2+a_3^2)^2}{4}+\frac{(a_1^2+a_2^2+a_3^2)^2}{4}+a_4^4+\cdots+a_n^4\right].\\
+			\end{array}
+			$$
+
+			只需证
+
+			$$\frac{(a_1^2+a_2^2+a_3^2)^2}{2}\leq a_1^4+a_2^4+a_3^4,$$
+
+			只需证
+
+			$$2a_1^2a_2^2+2a_2^2a_3^2+2a_3^2a_1^2-a_1^4-a_2^4-a_3^4\leq 0,$$
+
+			只需证
+
+			$$(a_1+a_2+a_3)(a_1+a_2-a_3)(a_1+a_3-a_2)(a_2+a_3-a_1)\leq 0$$
+
+			显然成立.
+
+			于是得证.
+
+		~\\
+
+		\item $a, b, c > 0, a+b+c=3$. 求证:
+
+			$$\sum_{\mathrm{cyc}}\frac{a^2+3b^2}{ab^2(4-ab)}\geq 4.$$
+			~\\
+
+			令
+
+			$$M=\sum_{\mathrm{cyc}}\frac{a^2}{ab^2(4-ab)}=\sum_{\mathrm{cyc}}\frac{a}{b^2(4-ab)}, N=\sum_{\mathrm{cyc}}\frac{3b^2}{ab^2(4-ab)}=3\sum_{\mathrm{cyc}}\frac{1}{a(4-ab)},$$
+
+			即证$M+N\geq 4.$
+
+			$$
+			\begin{array}{rcl}
+			M:&&\displaystyle \left[\sum_{\mathrm{cyc}} \frac{a}{b^2 (4-ab)}\right]\left[\sum_{\mathrm{cyc}}\frac{4-ab}{a}\right]\\
+			&\geq&\displaystyle \left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)^2,\\
+			\end{array}
+			$$
+
+			即
+
+			$$M\geq\frac{\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)^2}{4\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)-3}\geq 1.$$
+
+			$$
+			\begin{array}{rcl}
+			N:&&\displaystyle \left[\sum_{\mathrm{cyc}}\frac{3b^2}{ab^2(4-ab)}\right]\left[\sum_{\mathrm{cyc}}\frac{4-ab}{a}\right]\\
+			&\geq&\displaystyle \left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)^2,\\
+			\end{array}
+			$$
+
+			即
+
+			$$N\geq3.$$
+
+			于是有$M+N\geq 4,$ 得证.
+
+	\end{enumerate}
+\end{document}
