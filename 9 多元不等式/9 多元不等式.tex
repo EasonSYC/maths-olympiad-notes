@@ -1,0 +1,129 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 9 多元不等式}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年12月4日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item 已知$a, b, c, d$都是区间$[1, 2]$上的实数, 求证: $$|(a-b)(b-c)(c-d)(d-a)|\leq\frac{abcd}{4}.$$
+			~\\
+
+			即证
+
+			\begin{align*}
+				|a-b| &\geq \frac{\sqrt{ab}}{\sqrt{2}} \tag{1}\\
+				|b-c| &\geq \frac{\sqrt{bc}}{\sqrt{2}}\\
+				|c-d| &\geq \frac{\sqrt{cd}}{\sqrt{2}}\\
+				|d-a| &\geq \frac{\sqrt{da}}{\sqrt{2}}
+			\end{align*}
+
+			下证(1):
+
+			$$|a-b| \geq \frac{\sqrt{ab}}{\sqrt{2}} \Leftrightarrow 2(a-b)^2\leq ab \Leftrightarrow (a-2b)(2a-b)\leq 0.$$
+
+			得证.
+
+		~\\
+
+		\item 给定正实数$0<a<b$, 设$x_1, x_2, x_3, x_4 \in [a, b]$, 求下式的极值: $$\frac{\frac{x_1^2}{x_2} + \frac{x_2^2}{x_3} + \frac{x_3^2}{x_4} + \frac{x_4^2}{x_1}}{x_1 + x_2 + x_3 + x_4}.$$
+			~\\
+
+			下求最小值:
+
+			$$\left(\frac{x_1^2}{x_2}+\frac{x_2^2}{x_3}+\frac{x_3^2}{x_4}+\frac{x_4^2}{x_1}\right)(x_2+x_3+x_4+x_1)\geq(x_1+x_2+x_3+x_4)^2,$$
+
+			$$\text{原式} \geq 1, x_1=x_2=x_3=x_4\text{时取等}.$$
+
+			下求最大值:
+
+			$$(ax_1 - bx_2)(bx_1 - ax_2) \leq 0 \Leftrightarrow abx_1^2 (a^2 + b^2)x_1 x_2 + abx_2^2 \leq 0,$$
+
+			\begin{align*}
+				\frac{x_1^2}{x_2} &\leq \frac{a^2+b^2}{ab} x_1 - x_2, \text{等号成立}x_1, x_2\text{中一个}a\text{一个}b,\\
+				\frac{x_2^2}{x_3} &\leq \frac{a^2+b^2}{ab} x_2 - x_3,\\
+				\frac{x_3^2}{x_4} &\leq \frac{a^2+b^2}{ab} x_3 - x_4,\\
+				\frac{x_4^2}{x_1} &\leq \frac{a^2+b^2}{ab} x_4 - x_1.
+			\end{align*}
+
+			相加, 得到$$\sum_{k=1}^{4} \frac{x_k^2}{x_{k+1}} \leq \left(\frac{a}{b}+\frac{a}{b}-1\right)\sum_{k=1}^{4}x_k.$$
+
+			故
+
+			$$\text{原式}_{\max} = \frac{a}{b}+\frac{b}{a}-1,$$
+
+			$$x_1=x_3=a, x_2=x_4=b,\text{等号成立}.$$
+
+		~\\
+
+		\item 设实数$a, b, c$满足$a+b+c=0$. 令$d=\max\{|a|, |b|, |c|\}$, 证明: $$|(1+a)(1+b)(1+c)|\geq1-d^2.$$
+			~\\
+
+			若$d\geq 1$, 显然成立.
+
+			若$d<1$, 不妨设$a\leq b\leq c$, 则$a, b, c\in(-1, 1).$
+
+			$$\text{原式} \Leftrightarrow (1+a)(1+b)(1+c) \geq 1-b^2. \eqno{(*)}$$
+
+			若$a\leq 0\leq b\leq c$, 则$d=-a$,
+
+			$$(*) \Leftrightarrow (1+b)(1+c) \geq 1-a \Leftrightarrow (1+b)(1+c) \geq 1+b+c.$$
+
+			若$a\leq b\leq 0\leq c$, 则$d=c$,
+
+			$$(*) \Leftrightarrow (1+a)(1+b)\geq 1-c \Leftrightarrow (1+a)(1+b)\geq 1+a+b.$$
+
+			综上得证.
+
+		~\\
+
+		\item 已知$n\geq 2$, $a_1, a_2, \cdots, a_n \geq 0$且满足$$\sum_{i=1}^{n} a_i=1,$$求$$\sum_{i=1}^{n}a_i a_{i+1}$$的最大值, 其中约定$a_{n+1}=a_1$.
+			~\\
+
+			\begin{enumerate}[label=$\arabic*^{\circ}$]
+				\item $n=2$时, $$\text{原式}=2a_1 a_2 \leq \frac{(a_1 + a_2)^2}{2}=\frac{1}{2}, n=2, \text{最小值}\frac{1}{2}.$$
+				\item $n=3$时, $$\text{原式}=a_1 a_2 + a_2 a_3 + a_3 a_1 \leq \frac{(a_1 + a_2 + a_3)^2}{3}=\frac{1}{3}, n=3, \text{最小值}\frac{1}{3}.$$
+				\item $n=4$时, $$\text{原式}=a_1 a_2 + a_2 a_3 + a_3 a_4 + a_4 a_1 \leq \left[\frac{(a_1 + a_3) + (a_2 + a_4)}{3}\right]^2=\frac{1}{4}, n=4, \text{最小值}\frac{1}{4}.$$
+				\item $n>4$时, 分两类讨论:
+				\begin{enumerate}[label=4.$\arabic*^{\circ}$]
+					\item $n=2k$, 
+					\begin{align*}
+						\sum_{i=1}^{2k} a_i a_{i+1} &\leq (a_1 + a_3 + \cdots + a_{2k-1})(a_2 + a_4 + \cdots + a_2k)\\
+						&\leq \left[\frac{(a_1+a_3+\cdots+a_{2k-1})(a_2+a_4+\cdots+a_{2k})}{2}\right]^2\\
+						&= \frac{1}{4}.
+					\end{align*}
+					$a_1 = a_{2k} = \dfrac{1}{2}, a_2 = \cdots = a_{2k-1}=0$等号成立.
+					\item $n=2k+1$,
+					\begin{align*}
+						\sum_{i=1}^{2k+1} a_i a_{i+1} &= \sum_{i=1}^{2k} a_i a_{i+1} + a_{2k+1}a_1\\
+						&\leq \sum_{i=1}^{2l} a_i a_{i+1} + a_4 a_1\\
+						&\leq (a_1 + a_3 + \cdots + a_{2k+1})(a_2 + a_4 + \cdots + a_{2k})\\
+						&\leq \frac{1}{4}.
+					\end{align*}
+					$a_1 = \dfrac{1}{2} = a_3$, $a_3 = \cdots = a_{2k+1} = 0$等号成立.
+				\end{enumerate}
+				最小值$\dfrac{1}{4}$.
+			\end{enumerate}
+
+	\end{enumerate}
+\end{document}
