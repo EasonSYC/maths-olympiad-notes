@@ -1,0 +1,263 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{extarrows}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\graphicspath{ {./images/} }
+
+\title{\S 6 柯西不等式'}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年11月06日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item $x_1, x_2, \cdots, x_n \geq 0$. 求证: $$\frac{1}{a+x_1}+\frac{1}{1+x_1+x_2}+\cdots+\frac{1}{1+x_1+x_2+\cdots+x_n}\leq \sqrt{\sum_{i=1}^{n} \frac{1}{x_i}}.$$
+			~\\
+
+			$$\text{左}^2=\left(\frac{1}{x_1}+\frac{1}{x_2}+\cdots+\frac{1}{x_n}\right) \left[\frac{x_1}{(1+x_1)^2}+\frac{x_2}{(1+x_1+x_2)^2}+\cdots+\frac{x_n}{(1+x_1+x_2+\cdots+x_n)^2}\right]. \eqno{(1)}$$
+
+			而
+
+			\begin{align*}
+			\frac{x_k}{(1+x_1+\cdots+x_k)^2}&\leq\frac{x_k}{(1+x_1+\cdots+x_{k-1})(1+x_1+\cdots+x_k)}\\
+			&=\frac{1}{1+x_1+\cdots+x_{k-1}}-\frac{1}{1+x_1+\cdots+x_k},
+			\end{align*}
+
+			故
+
+			$$\sum_{k=1}^{n}\frac{x_k}{(1+\cdots+x_k)^2}\leq \frac{1}{1}-\frac{1}{1+x_1+\cdots+x_n}.$$
+
+			代入$(1)$式, 有:
+
+			$$\text{左}^2 \leq \sum_{i=1}^{n}\frac{1}{x_i}. \eqno{\textbf{Q.E.D.}}$$
+
+		~\\
+
+		\item 设$a, b, c>0$, 且$a+b+c=3$. 求证: $$\sqrt{\frac{b}{a^2+3}}+\sqrt{\frac{c}{b^2+3}}+\sqrt{\frac{a}{c^2+3}}\leq \frac{3}{2}\sqrt[4]{\frac{1}{abc}}.$$
+			~\\
+
+			\begin{align*}
+			\text{左}^2 &\leq (b+c+a)\left(\frac{1}{a^2+3}+\frac{1}{b^2+3}+\frac{1}{c^2+3}\right)\\
+			&=3\left(\frac{1}{a^2+3}+\frac{1}{b^2+3}+\frac{1}{c^2+3}\right). \tag{1}
+			\end{align*}
+
+			又
+
+			\begin{align*}
+			\frac{1}{a^2+3}& =\frac{1}{a^2+1+1+1}\\
+			& \leq\frac{1}{4\sqrt[4]{a^2}}\\
+			& =\frac{1}{4\sqrt{a}},\\
+			\end{align*}
+
+			故
+
+			\begin{align*}
+			\frac{1}{a^2+3}+\frac{1}{b^2+3}+\frac{1}{c^2+3} & \leq \frac{1}{4}\left(\frac{1}{\sqrt{a}}+\frac{1}{\sqrt{b}}+\frac{1}{\sqrt{c}}\right) & x^2+y^2+z^2\geq xy+yz+zx\\
+			 & = \frac{1}{4}\frac{\sqrt{ab}+\sqrt{bc}+\sqrt{ca}}{\sqrt{abc}} & \\
+			 & \leq \frac{1}{4}\frac{a+b+c}{\sqrt{abc}} & \\
+			 & = \frac{3}{4} \frac{1}{\sqrt{abc}}. & \\
+			\end{align*}
+
+			代入 $(1)$ 有
+
+			$$\text{左}^2\leq\frac{9}{4}\sqrt{\frac{1}{abc}}. \eqno{\textbf{Q.E.D.}}$$
+
+		~\\
+
+		\item 已知正实数$a, b, c, d$满足$a+b+c+d=4$. 求证: $$\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{d}+\frac{d^2}{a} \geq 4+(a-d)^2.$$
+			~\\
+
+			\textbf{奚同学失败的尝试}:
+
+			由
+
+			$$(x_1^2+x_2^2+\cdots+x_n^2)(y_1^2+y_2^2+\cdots+y_n^2)-(x_1 y_1+x_2 y_2+\cdots+x_n y_n)^2 = \sum_{1\leq i<j \leq n} (x_i y_j - x_j y_i)^2$$
+
+			有
+
+			$$
+			\textbf{原不等式} \Leftrightarrow \left(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{d}+\frac{d^2}{a}\right)(b+c+d+a)-(a+b+c+d)^2 \geq 4(a-d)^2,
+			$$
+
+			难以证明.
+
+			\textbf{正确解答}:
+
+			\begin{align*}
+			\left(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{d}+\frac{d^2}{a}\right)-4 &= \left(\frac{a^2}{b}+b-2a\right) + \left(\frac{b^2}{c}+c-2b\right) + \left(\frac{c^2}{d}+d-2c\right) + \left(\frac{d^2}{A}+a-2d\right)\\
+			&= \left(\frac{a}{\sqrt{b}}-\sqrt{b}\right)^2 + \left(\frac{b}{\sqrt{c}}-\sqrt{c}\right)^2 + \left(\frac{c}{\sqrt{d}}-\sqrt{d}\right)^2 + \left(\frac{d}{\sqrt{a}}-\sqrt{a}\right)^2\\
+			&\geq \frac{[(a-b)+(b-c)+(c-d)+(d-a)]^2}{a+b+c+d}\\
+			&= (a-d)^2. \tag*{\textbf{Q.E.D.}}
+			\end{align*}
+
+		~\\
+
+		\item 正实数$x, y, z$满足$xyz\geq 1$. 求证: $$\frac{x^5-x^2}{x^5+y^2+z^2}+\frac{y^5-y^2}{y^5+z^2+x^2}+\frac{z^5-z^2}{z^5+x^2+y^2} \geq 0.$$
+			~\\
+
+			$$\text{原不等式}\Leftrightarrow \sum \frac{x^2+y^2+z^2}{x^5+y^2+z^2}\leq 3. \eqno{\displaystyle 1-\frac{x^5-x^2}{x^5+y^2+z^2}=\frac{x^2+y^2+z^2}{x^5+y^2+z^2}}$$
+
+			只需证
+
+			$$\frac{x^2+y^2+z^2}{\frac{x^5}{xyz}+y^2+z^2}\leq 3. \eqno{(1)}$$
+
+			由柯西不等式,
+
+			$$\left[\frac{x^5}{xyz}+y^2+z^2\right][yz+y^2+z^2] \geq (x^2+y^2+z^2)^2.$$
+
+			于是有
+
+			$$\frac{x^2+y^2+z^2}{\frac{x^5}{xyz}+y^2+z^2}\leq \frac{yz+y^2+z^2}{x^2+y^2+z^2},$$
+
+			故 
+
+			\begin{align*}
+			\text{左} &\leq \frac{yz+y^2+z^2+zx+x^2+z^2+xy+x^2+y^2}{x^2+y^2+z^2}\\
+			&\leq 3,
+			\end{align*}
+
+			即$(1)$成立, \textbf{Q.E.D.}
+
+		~\\
+
+		\item 设$x_i > 0, x_i y_i - z_i^2 > 0 (i=1, 2, \cdots, n)$, 证明: $$\frac{n^3}{\sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i - \left(\sum_{i=1}^{n}z_i^2\right)^2} \leq \sum_{i=1}^{n} \frac{1}{x_i y_i - z_i^2}.$$
+			~\\
+
+			由卡尔松不等式, 有
+
+			$$\left(\sum \frac{1}{x_i y_i - z_i^2}\right)\left[\sum \left(\sqrt{x_i y_i} + z_i\right)\right]\left[\sum \left(\sqrt{x_i y_i} - z_i\right)\right] \leq \sum x_i - \sum y_i - \left(\sum z_i \right)^2.$$
+
+			又
+
+			$$\left(\sum \frac{1}{x_i y_i - z_i^2}\right)\left[\sum \left(\sqrt{x_i y_i} + z_i\right)\right]\left[\sum \left(\sqrt{x_i y_i} - z_i\right)\right] \geq (1+1+\cdots+1)^3=n^3,$$
+
+			即
+
+			$$\frac{n^3}{\sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i - \left(\sum_{i=1}^{n}z_i^2\right)^2} \leq \sum_{i=1}^{n} \frac{1}{x_i y_i - z_i^2}. \eqno{\textbf{Q.E.D}}$$
+
+		~\\
+
+		\item 设$x, y, z$满足$xy+yz+zx=x+y+z$, 求证: $$\frac{1}{x^2+y+1}+\frac{1}{y^2+z+1}+\frac{1}{z^2+x+1}\leq 1.$$
+			~\\
+
+			$$(x^2+y+1)(1+y+z^2)\geq(x+y+z)^2,$$
+
+			故
+
+			$$\frac{1}{x^2+y+1}\leq\frac{1+y+z^2}{(x+y+z)^2},$$
+
+			\begin{align*}
+				\text{左} &\leq \frac{x^2+y^2+z^2+x+y+z+3}{(x+y+z)^2}\\
+				&= \frac{(x+y+z)^2-(x+y+z)+3}{(x+y+z)^2}\\
+				& ...... \tag*{\textbf{Q.E.D}}
+			\end{align*}
+
+		~\\
+
+		\item 设$a, b, c>0, (a+b-c)\left(\dfrac{1}{a}+\dfrac{1}{b}-\dfrac{1}{c}\right)=4.$ 求证: $$\left(a^4+b^4+c^4\right)\left(\frac{1}{a^4}+\frac{1}{b^4}+\frac{1}{c^4}\right)\geq 2304.$$
+			~\\
+
+			\begin{align*}
+				(a+b)\left(\frac{1}{a}+\frac{1}{b}\right) &= 3+c\left(\frac{1}{a}+\frac{1}{b}\right)+\frac{1}{c}(a+b)\\
+				&\geq 3+2\sqrt{(a+b)\left(\frac{1}{a}+\frac{1}{b}\right)},
+			\end{align*}
+
+			即
+
+			\begin{align*}
+			&(a+b)\left(\frac{1}{a}+\frac{1}{b}\right)\geq 9\\
+			\Rightarrow& \frac{b}{a}+\frac{a}{b}\geq 7\\
+			\Rightarrow& \frac{b^2}{a^2}+\frac{a^2}{b^2}\geq 47.
+			\end{align*}
+
+			\begin{align*}
+				\left(a^4+b^4+c^4\right)\left(\frac{1}{b^4}+\frac{1}{a^4}+\frac{1}{c^4}\right) &\geq \left(\frac{a^2}{b^2}+\frac{b^2}{a^2}+1\right)^2\\
+				&\geq 48^2\\
+				&= 2304.
+			\end{align*}
+
+		~\\
+
+		\item 设$x, y, z\in\mathbb{R}$. 求证: $$(x^2+xy+y^2)(y^2+yz+z^2)(z^2+zx+x^2)\geq(xy+yz+zx)^2.$$
+			~\\
+
+			分两类讨论.
+
+			\begin{enumerate}[label=$\arabic*^{\circ}$]
+				\item $x, y, z\geq 0$, 由卡尔松不等式, 易证.
+				\item $x, t\geq , z<0$, 有
+
+					$$(x^2+xy+y^2)(y^2+yz+z^2)(z^2+zx+x^2)\geq (x^2+xy+y^2)\cdot\frac{3}{4}y^2\cdot\frac{3}{4}x^2,$$
+
+					即证
+
+					$$\frac{3}{4}y^2\cdot\frac{3}{4}x^2\geq(xy)^3,$$
+
+					即证
+
+					$$\frac{9}{16}(x^2+xy+y^2)\geq xy,$$
+
+					即证
+
+					$$9x^2+9y^2\geq 7xy,$$
+
+					显然成立.
+
+					于是有
+
+					$$(x^2+xy+y^2)(y^2+yz+z^2)(z^2+zx+x^2)\geq(xy+yz+zx)^2.$$
+
+			\end{enumerate}
+
+			综上,
+
+			$$(x^2+xy+y^2)(y^2+yz+z^2)(z^2+zx+x^2)\geq(xy+yz+zx)^2. \eqno{\textbf{Q.E.D}}$$
+
+		~\\
+
+		\item 正数$a_{ij} (i=1, 2, \cdots n, j=1, 2, \cdots, n)$满足$a_{ij}\cdot a_{ji}=1$. 记$c_i = \sum_{k=1}^{n} a_{ki}$. 求证: $$\sum \frac{1}{c_i}\leq 1.$$
+			~\\
+
+			设
+
+			$$c=\sum_{j=1}^{n} \frac{1}{c_j}.$$
+
+			对任意的$i\in[1, n]\cap\mathbb{Z}$及$x_i \in \mathbb{R}^{+}$, 由柯西不等式得
+
+			$$\sum_{j=1}^{n} \frac{x_i^2}{a_{ji}}\geq \frac{\left(\sum_{j=1}^{n} x_j\right)^2}{\sum_{j=1}^{n} a_{ji}}.$$
+
+			而对丁任意的$i, j\in[1, n]\cap\mathbb{Z}$, 均有$a_{ij} a_{ji}=1$. 于是, 对于任意的$i\in[1, n]\cap\mathbb{Z}$都有
+
+			$$\sum_{j=1}^{n}\frac{a_{ij}}{c_j^2}\geq\frac{c^2}{c_i}.$$
+
+			于是有
+
+			$$\sum_{i=1}^{n} \sum_{j=1}^{n} \frac{a_{ij}}{c_j^2}\geq c^2 \sum_{i=1}^{n} \frac{1}{c_i} = c^3.$$
+
+			又
+
+			$$\sum_{i=1}^{n} \sum_{j=1}^{n} \frac{a_{ij}}{c_j^2} = \sum_{j=1}^{n} \sum_{i=1}^{n} \frac{a_{ij}}{c_j^2} = \sum_{j=1}^{n}\left(\frac{1}{c_j^2} \sum_{i=1}^{n} a_{ij}\right)=\sum_{j=1}^{n} \frac{c_j}{c_j^2}=\sum_{j=1}^{n} \frac{1}{c_j} = c.$$
+
+			于是有$c\geq c^3$.
+
+			又$c>0$, 有
+
+			$$c=\sum \frac{1}{c_i}\leq 1. \eqno{\textbf{Q.E.D}}$$
+
+	\end{enumerate}
+\end{document}
