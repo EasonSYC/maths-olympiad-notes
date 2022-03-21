@@ -1,0 +1,310 @@
+%!TEX TX-program = xelatex
+\documentclass[8pt]{article}
+
+\usepackage[UTF8]{ctex}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\title{\S 1 集合}
+\author{高一（6）班\ 邵亦成\ 26号}
+\date{2021年09月11日}
+
+\geometry{a4paper, scale=0.85}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{enumerate}
+		\item
+
+			已知：$S_1, S_2, S_3$ 为非空整数集，$\forall 1, 2, 3$的排列$i, j, k : x \in S_i, y \in S_j \Rightarrow x-y \in S_k$.
+
+			求证：$S_1, S_2, S_3$ 三个集合中至少有两个相等.
+
+			~\\
+			思路：
+
+			\begin{enumerate}[ (i) ]
+				\item
+					至少有两个相等 $\Leftrightarrow 0\in S_1 \cup S_2 \cup S_3$
+
+					\begin{table}[h]
+						\centering
+						\begin{tabular}{|c|c|c|}
+							\hline $S_1$&$S_2$&$S_3$\\
+							\hline $0$&$x$&$x$\\
+							\hline &$y$&$y$\\
+							\hline &$\vdots$&$\vdots$\\
+							\hline
+						\end{tabular}
+						\caption{若 $0 \in S_1 \cup S_2 \cup S_3$}
+					\end{table}
+
+				\item
+
+					若$x\in S_i$则$-x \in S_i$
+
+					\begin{table}[h]
+						\centering
+						\begin{tabular}{|c|c|c|}
+							\hline $S_1$&$S_2$&$S_3$\\
+							\hline $x$&$y$&$y-x$\\
+							\hline $-x$&&\\
+							\hline
+						\end{tabular}
+						\caption{若$x \in S_i$}
+					\end{table}
+
+				\item
+
+					对于$y \in \mathbb{N}^*$
+					\begin{enumerate}[ i) ]
+						\item
+							若$x>y$则$x$除以$y$的余数$\in S$
+						\item
+							若$0<x<y$则$x \in S$
+					\end{enumerate}
+
+					$\therefore \forall y \in \mathbb{N}^*:\exists x \in \mathbb{N} \cap S : x < y, y \in S$
+
+					\begin{table}[h]
+						\centering
+						\begin{tabular}{|c|c|c|}
+							\hline $S_1$&$S_2$&$S_3$\\
+							\hline $x$&$y$&$x-y$\\
+							\hline $x-2y$&&$x-3y$\\
+							\hline $x-4y$&&$x-5y$\\
+							\hline $\vdots$&&$\vdots$\\
+							\hline
+						\end{tabular}
+						\caption{对于$y \in N^*$}
+					\end{table}
+			\end{enumerate}
+
+			证明：
+
+			\begin{enumerate} [ i)]
+
+				\item
+					若$0\in S_1 \cup S_2 \cup S_3$, 得证.
+
+				\item
+					若$0\notin S_1 \cup S_2 \cup S_3$, 设 $t=\min\left(S_1 \cup S_2 \cup S_3\right)$.
+
+					不妨设 $t \in S_1$, 对于 $x \in S_2 \left(x > 0\right)$:
+
+					$x-t \in S_3, x-2t \in S_2 \dots$, 即$x - \left[ \frac{x}{t} \right] t \in S_1 \cup S_3$.
+
+					而 $0 \leq x - \left[ \frac{x}{t} \right] t < t$.
+
+					结合$t$的最小性可知 $x - \left[ \frac{x}{t} \right] t =0 \in S_1 \cup S_3$
+
+					与假设不符.
+
+			\end{enumerate}
+			
+			综上所述, $S_1, S_2, S_3$ 三个集合中至少有两个相等.
+
+		~\\
+
+		\item
+
+			设$a_1, a_2, a_3, a_4$是$4$个有理数，使：
+
+			$$\left \{a_i a_j | 1 \leq i < j \leq 4, i,j \in \mathbb{Z} \right\} = \left\{-24, -2, -\frac{3}{2}, -\frac{1}{8}, 1, 3\right\}$$
+
+			求$a_1 + a_2 + a_3 + a_4$.
+
+			~\\
+			$\prod ( a_i a_j ) = (-24) \times (-2) \times \left(-\frac{3}{2}\right) \times \left(-\frac{1}{8}\right) \times 1 \times 3 = 3^3$.
+
+			$\therefore \prod a_i = 3$
+
+			不妨设$a_1 a_2 = -24$, 则$a_3 a_4 = -\frac{1}{8}$.
+
+			不妨设$a_1 a_3 = -2$, 则$a_2 a_4 = -\frac{3}{2}$.
+
+			\begin{enumerate}[ (i) ]
+
+				\item
+					若$a_1 a_4 = 1, a_2 a_3 = 3$
+
+					解得
+
+					$$\left \{
+						\begin{aligned}
+						&a_1 = 4 \\
+						&a_2 = -6 \\
+						&a_3 = -\frac{1}{2}\\
+						&a_4 = \frac{1}{4}
+						\end{aligned}
+					\right.$$
+
+					或
+
+					$$\left \{
+						\begin{aligned}
+						&a_1 = -4 \\
+						&a_2 = 6 \\
+						&a_3 = \frac{1}{2}\\
+						&a_4 = -\frac{1}{4}
+						\end{aligned}
+					\right.$$
+
+				\item
+					若$a_1 a_4 = 3, a_2 a_3 = 1$, 无有理数解.
+
+			\end{enumerate}
+
+			综上所述，$a_1 + a_2 + a_3 + a_4 = \pm \frac{9}{4}$.
+
+		~\\
+
+		\item
+
+			称有限集$S$的所有元素的积为$S$的“积数”. 给定 $M = \left \{ \frac{1}{2}, \frac{1}{3}, \cdots \frac{1}{100} \right \}$. 求$M$的所有偶数元子集的“积数”之和.
+
+			~\\
+			构造方程
+
+			$$\left(x-\frac{1}{2}\right)\left(x-\frac{1}{3}\right)\cdots\left(x-\frac{1}{100}\right)=a_{99} x^{99} + a_{98} x^{98} + \cdots a_1 x^1 + a_0$$
+
+			则
+
+			$$\sum (x_i x_j) = \frac{a_{97}}{a_{99}}$$
+
+			$$\sum (x_i x_j x_k x_m) = \frac{a_{95}}{a_{99}}$$
+
+			$$\vdots$$
+
+			于是对所求和$S$有：
+
+			$$S=\frac{a_{97}+a_{95}+\cdots+a_1}{a_{99}}=\sum_{k=1}^{44} a_{2k+1}$$
+
+			在所构造方程中代入$x=1$有：
+
+			$$\frac{1}{100} = a_{99} + a_{97} + a_{95} + \cdots + a_1 + a_0$$
+
+			代入$x=-1$有：
+
+			$$-\frac{101}{2} = - a_{99} + a_{97} - a_{95} + \cdots - a_1 + a_0$$
+
+			相减得
+
+			$$\frac{5051}{100} = 2 \times \left ( 1 + \sum_{k=1}^{44} a_{2k+1} \right )$$
+
+			$\therefore a_{97} + \cdots + a_1 = \frac{4851}{200}$.
+
+		~\\
+
+		\item
+
+			设$n\in\mathbb{N}$, $S={1, \cdots, 2020}$. 求最小的$k \in \mathbb{N}^*$, 使得$\exists S$的子集$A_1, A_2, \cdots A_k$具有：对于$S$中的任意两个不同的元素$a, b$存在$j\in {1, 2, \cdots k}$, 使得 $A_j \cap \{a,b\}$的元素个数为1.
+
+			~\\
+			存在性问题只需构造一个符合条件的即可.
+
+			考虑
+
+			$$a \in \{1, 2, \cdots 1010\}, b \in \{1011, 1012, \cdots, 2020\}$$
+			
+			构造：
+
+			\begin{table}[h]
+				\centering
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+					\hline &$1$&$2$&$3$&$\cdots$&$1010$&$1011$&$\cdots$&$2020$\\
+					\hline $A$&$\surd$&$\surd$&$\surd$&$\cdots$&$\surd$&$\times$&$\cdots$&$\times$\\
+					\hline
+				\end{tabular}
+				\caption{考虑一种$A$}
+			\end{table}
+			~\\
+			余下的情形：
+
+			$$a,b \in \{1, 2, \cdots 1010\}$$
+
+			或
+
+			$$a,b \in \{1011, 1012, \cdots, 2020\}.$$
+
+			若$i\in A_j$, 我们在$i$所在列, $A_j$所在行填入$1$, 反之填入$0$.
+
+			将$i$所在列构成的序列记为$P(i)$,
+
+			由题可知, $\forall a, b \in S, a \neq b : P(a) \neq P(b)$.
+
+			$2^{10} < 2020 < 2^{11}$, $\therefore k\geq 11$.
+
+		~\\
+
+		\item
+
+			设$S=\left \{ A_1, A_2, \cdots A_n \right \}$, 其中$A_1, A_2, \cdots a_n$是$n$个互不相同的有限集$(n \geq 2)$满足$\forall A_i, A_j \in S : A_i \cup A_j \in S, k = \min_{1<j\leq n}\left|A_i\right|\geq 2$.
+
+			求证：
+
+			$$\exists x \in \bigcup_{i=1}^{n} A_i : x \in A_1 \cdots A_n$$
+
+			满足$x \in A_1 \cdots A_n$的至少$n$个集合.
+
+			不妨设
+
+			$$\left| A_1 \right| \leq \left| A_2 \right| \leq \cdots \left| A_n \right|$$
+
+			记$A_1=\left \{ x_1, x_2, \cdots x_k \right \}$,
+
+			\begin{enumerate} [ (i) ]
+				\item
+					$A_i \subseteq A_n (i = 1, 2, \cdots n)$
+					因为$A_n \subseteq A_i \cup A_n \in S$ 
+				
+				\item
+					记$P{x_i)=\{A_j|x_i \in A_j\, i = 1 \cdots k, j = 1 \cdots n}$
+					只需证
+					$$\exists i: \left|P(x_i)\right| \geq \frac{n}{k}$$
+					只需证
+					$$\sum_{i=1}^k \left|P(x_i)\right| \geq n$$
+					只需证
+					$$\forall j:\exists i: A_j \in P(x_2) \Leftrightarrow A_j, A_i \cap A_j \neq \emptyset$$
+					但此式不成立.
+			\end{enumerate}
+
+			记$A_{i1}, A_{i2}, \cdots A_{ik}$是$S$中与$A_1$不相交的集合.
+
+			则有$A_{i1}\cup A_1 \in S, A_{i2}\cup A_1 \in S, \cdots A_{ik}\cup A_1 \in S$
+
+			\begin{table}[h]
+				\centering
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+					\hline &$A_1$&$A_{i1}$&$A_{i2}$&$\cdots$&$A_{it}$&$A_{i1}\cup A_1$&$A_{i2}\cup A_2$&$\cdots$&$A_{it}\cup A_1$&$A_1^{'}$&$A_2^{'}$&$\cdots$&$A_{n-2t-1}^{'}$\\
+					\hline $x_1$&1&0&0&$\cdots$&0&1&1&$\cdots$&1&&&&\\
+					\hline $x_2$&1&0&0&$\cdots$&0&1&1&$\cdots$&1&&&&\\
+					\hline $\vdots$&\vdots&\vdots&\vdots&$\cdots$&\vdots&\vdots&\vdots&$\cdots$&1&&&&\\
+					\hline $x_k$&1&0&0&$\cdots$&0&1&1&$\cdots$&1&&&&\\
+					\hline
+				\end{tabular}
+				\caption{构造集合$A$}
+			\end{table}
+
+			$\sum_{i=1}^{k} |P(x_1)|$即为表格中所有数的和.
+
+			令$N$为表格中剩余$n-2t-1$列所有数字的和,
+
+			$$\begin{aligned}
+				\sum_{i=1}^{k} |P(x_1)| &= k + kt + N\\
+				&\geq k + kt + (n - 2t - 1)\\
+				&\geq 2 + 2t + n - 2t - 1\\
+				&= n + 1\\
+				&> n\\
+			\end{aligned} $$
+
+			得证.
+
+	\end{enumerate}
+\end{document}
