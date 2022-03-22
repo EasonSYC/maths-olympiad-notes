@@ -4,7 +4,7 @@ By EasonSYC
 
 This is a project of my Maths Olympiad Notes whilst studying in China.
 
-I'M NO LONGER UPDATING THIS REPOSITORY.
+**I'm no longer studying in China, thus this repository is no longer going to update.**
 
 As I am uploading this repository at one time, you will not see the gradual commits in the process.
 
