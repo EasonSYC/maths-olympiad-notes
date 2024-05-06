@@ -1,4 +1,4 @@
-# Maths-Olympiad-Notes
+# Maths Olympiad Notes
 
 By EasonSYC
 
