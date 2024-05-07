@@ -1,6 +1,6 @@
 # Maths Olympiad Notes
 
-By EasonSYC
+By Eason Shao
 
 This is a project of my Maths Olympiad Notes whilst studying in China.
 
